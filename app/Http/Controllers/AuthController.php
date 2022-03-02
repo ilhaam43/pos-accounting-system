@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\LoginRequest;
 use App\Models\User;
 use Hash;
 use Session;
@@ -20,26 +21,21 @@ class AuthController extends Controller
         return view('auth.login');
     }
 
-    public function login(Request $request)
+    public function login(LoginRequest $request)
     {
-        $request->validate([
-            'email' => 'required',
-            'password' => 'required',
-        ]);
-
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
             return redirect()->intended('admin')->withSuccess('Signed in');
         }
 
-        return redirect("/")->withSuccess('Login details are not valid');
+        return redirect('/')->with('error','Login credentials are wrong');
     }
 
     public function logout() {
         Session::flush();
         Auth::logout();
 
-        return redirect('login');
+        return redirect('/');
     }
 
     /**

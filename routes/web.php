@@ -16,6 +16,10 @@ use App\Http\Controllers\AdminController;
 */
 
 Route::get('/', [AuthController::class, 'index'])->name('login.index');
-Route::post('/', [AuthController::class, 'login'])->name('login.access');
+Route::post('/', [AuthController::class, 'login'])->name('auth.login');
+Route::get('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 
-Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+//admin routes
+Route::group(['as'=>'admin.','prefix' => 'admin', 'middleware' => ['auth']], function () {
+    Route::get('/', [AdminController::class, 'index'])->name('index');
+});
