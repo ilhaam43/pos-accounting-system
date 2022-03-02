@@ -20,6 +20,6 @@ Route::post('/', [AuthController::class, 'login'])->name('auth.login');
 Route::get('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 
 //admin routes
-Route::group(['as'=>'admin.','prefix' => 'admin', 'middleware' => ['auth']], function () {
+Route::group(['as'=>'admin.','prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
     Route::get('/', [AdminController::class, 'index'])->name('index');
 });

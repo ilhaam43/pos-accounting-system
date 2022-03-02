@@ -23,9 +23,14 @@ class AuthController extends Controller
 
     public function login(LoginRequest $request)
     {
+        $user = auth()->user();
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('admin');
+            if(auth()->user()->role_id == 1){
+                return redirect()->intended('/');
+            }elseif(auth()->user()->role_id == 2){
+                return redirect()->intended('admin');
+            }
         }
 
         return redirect('/')->with('error','Login credentials are wrong');

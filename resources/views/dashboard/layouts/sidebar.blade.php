@@ -13,8 +13,8 @@
                   <span class="count bg-success"></span>
                 </div>
                 <div class="profile-name">
-                  <h5 class="mb-0 font-weight-normal">Henry Klein</h5>
-                  <span>Gold Member</span>
+                  <h5 class="mb-0 font-weight-normal">{{ Auth::user()->name }}</h5>
+                  <span>{{ Auth::user()->name }}</span>
                 </div>
               </div>
             </div>
@@ -28,6 +28,14 @@
                 <i class="mdi mdi-speedometer"></i>
               </span>
               <span class="menu-title">Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="pages/forms/basic_elements.html">
+              <span class="menu-icon">
+                <i class="mdi mdi-playlist-play"></i>
+              </span>
+              <span class="menu-title">Categories</span>
             </a>
           </li>
           <li class="nav-item menu-items">
