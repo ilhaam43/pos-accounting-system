@@ -5,26 +5,26 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>@yield('title')</title>
-    @include('dashboard.layouts.assets')
+    @include('admin.dashboard.layouts.assets')
   </head>
   <body>
     <div class="container-scroller">
-        @include('dashboard.layouts.sidebar')
+        @include('admin.dashboard.layouts.sidebar')
       <div class="container-fluid page-body-wrapper">
-        @include('dashboard.layouts.navbar')
+        @include('admin.dashboard.layouts.navbar')
         <div class="main-panel">
           <div class="content-wrapper">
             @yield('content')
           </div>
           <!-- content-wrapper ends -->
-        @include('dashboard.layouts.footer')
+        @include('admin.dashboard.layouts.footer')
         </div>
         <!-- main-panel ends -->
       </div>
       <!-- page-body-wrapper ends -->
     </div>
     <!-- container-scroller -->
-    @include('dashboard.layouts.scripts')
+    @include('admin.dashboard.layouts.scripts')
     @stack('scripts')
   </body>
 </html>

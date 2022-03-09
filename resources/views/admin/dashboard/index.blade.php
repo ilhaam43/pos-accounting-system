@@ -1,5 +1,5 @@
 @section('title', 'Dashboard Admin')
-@extends('dashboard.layouts.app')
+@extends('admin.dashboard.layouts.app')
 @section('content')
             <!-- row 1 -->
             <div class="row">

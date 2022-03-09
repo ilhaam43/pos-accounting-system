@@ -18,9 +18,9 @@ class AdminSeeder extends Seeder
     {
         DB::table('users')->insert([
             'role_id' => 1,
-            'name' => "Superadmin",
-            'email' => "superadmintest@yopmail.com",
-            'password' => Hash::make('superadmintest'),
+            'name' => "owner",
+            'email' => "ownertest@yopmail.com",
+            'password' => Hash::make('ownertest'),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
