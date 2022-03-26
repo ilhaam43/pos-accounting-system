@@ -3,9 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Barryvdh\Debugbar\Facade as DebugBar;
+use App\Models\ProductCategory;
+use App\Http\Requests\ProductCategoryRequest;
+use App\Services\ProductCategoryService;
 
 class ProductCategoryController extends Controller
-{
+{  
+    private $productCategory;
+
+    public function __construct(ProductCategoryService $productCategory)
+    {
+        $this->productCategory = $productCategory;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +23,8 @@ class ProductCategoryController extends Controller
      */
     public function index()
     {
-        return view('admin.product-category.index');
+        $productCategory = ProductCategory::all();
+        return view('admin.product-category.index', compact('productCategory'));
     }
 
     /**
@@ -32,9 +43,14 @@ class ProductCategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductCategoryRequest $request)
     {
-        //
+        try{    
+            $store = $this->productCategory->store($request);
+        }catch(\Throwable $th){
+            return redirect()->route('admin.product-categories.index')->with('error', 'Product category failed to add');
+        }
+        return redirect()->route('admin.product-categories.index')->with('success', 'Product category added successfully');
     }
 
     /**
@@ -56,7 +72,8 @@ class ProductCategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $productCategory = ProductCategory::findOrFail($id);
+        return view('admin.product-category.edit', compact('productCategory'));
     }
 
     /**
@@ -66,9 +83,14 @@ class ProductCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProductCategoryRequest $request, $id)
     {
-        //
+        try{    
+            $update = $this->productCategory->update($request, $id);
+        }catch(\Throwable $th){
+            return redirect()->route('admin.product-categories.index')->with('error', 'Product category failed to edit');
+        }
+        return redirect()->route('admin.product-categories.index')->with('success', 'Product category edit successfully');
     }
 
     /**
@@ -79,6 +101,11 @@ class ProductCategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try{    
+            $store = $this->productCategory->destroy($id);
+        }catch(\Throwable $th){
+            return redirect()->route('admin.product-categories.index')->with('error', 'Product category failed to delete');
+        }
+        return redirect()->route('admin.product-categories.index')->with('success', 'Product category delete successfully');
     }
 }
