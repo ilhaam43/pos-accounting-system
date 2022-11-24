@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,10 +14,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//this is login auth
 Route::get('/', function () {
     return view('auth/login');
-});
+})->name('login');
 
-Route::get('/admin', function () {
-    return view('admin/index');
+Route::post('/', [AuthController::class, 'login'])->name('login.process');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+// Route::get('/', [AuthController::class, 'index'])->name('login');
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::group(['middleware' => ['checkLogin:admin']], function () {
+        Route::get('/admin', function () {
+            return view('admin/index');
+        });
+    });
 });
