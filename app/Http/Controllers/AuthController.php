@@ -13,11 +13,11 @@ class AuthController extends Controller
         if ($user = Auth::user()) {
             if ($user->role == 'admin') {
                 return redirect()->intended('admin');
-            } elseif ($user->role == 'superadmin') {
-                return redirect()->intended('superadmin');
+            } elseif ($user->role == 'owner') {
+                return redirect()->intended('owner');
             }
         }
-        return view('auth/login');;
+        return view('auth/login');
     }
 
     public function login(Request $request)
