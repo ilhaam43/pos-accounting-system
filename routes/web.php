@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,9 +26,12 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 // Route::get('/', [AuthController::class, 'index'])->name('login');
 
 Route::group(['middleware' => ['auth']], function () {
-    Route::group(['middleware' => ['checkLogin:admin']], function () {
-        Route::get('/admin', function () {
+    Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['checkLogin:admin']], function () {
+        
+        Route::get('/', function () {
             return view('admin/index');
-        });
+        })->name('index');
+        
+        Route::resource('/products', ProductController::class);
     });
 });

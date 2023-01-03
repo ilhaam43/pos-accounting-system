@@ -7,11 +7,13 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Halaman Admin</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon.png">
-    <link rel="stylesheet" href="./vendor/owl-carousel/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="./vendor/owl-carousel/css/owl.theme.default.min.css">
-    <link href="./vendor/jqvmap/css/jqvmap.min.css" rel="stylesheet">
-    <link href="./css/style.css" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon.png') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/owl-carousel/css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/owl-carousel/css/owl.theme.default.min.css') }}">
+    <link href="{{ asset('vendor/jqvmap/css/jqvmap.min.css') }}" rel="stylesheet">
+    <!-- Datatable -->
+    <link href="{{ asset('vendor/datatables/css/jquery.dataTables.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
 <body>
 
@@ -180,14 +182,14 @@
                             <li><a href="./index.html">Dashboard</a></li>
                         </ul>
                     </li>
-                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-                                class="icon icon-app-store"></i><span class="nav-text">Product</span></a>
+                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                        <i class="icon icon-app-store"></i><span class="nav-text">Product</span></a>
                         <ul aria-expanded="false">
-                            <li><a href="./app-profile.html">Product List</a></li>
+                            <li><a href="./admin/products">Product List</a></li>
                         </ul>
                     </li>
-                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-                                class="icon icon-chart-bar-33"></i><span class="nav-text">Charts</span></a>
+                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                        <i class="icon icon-chart-bar-33"></i><span class="nav-text">Charts</span></a>
                         <ul aria-expanded="false">
                             <li><a href="./chart-flot.html">Flot</a></li>
                             <li><a href="./chart-morris.html">Morris</a></li>
