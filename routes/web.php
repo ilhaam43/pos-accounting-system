@@ -24,7 +24,6 @@ Route::post('/', [AuthController::class, 'login'])->name('login.process');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Route::get('/', [AuthController::class, 'index'])->name('login');
-
 Route::group(['middleware' => ['auth']], function () {
     Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['checkLogin:admin']], function () {
         

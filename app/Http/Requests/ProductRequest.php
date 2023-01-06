@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class ProductRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class ProductRequest extends FormRequest
      */
     public function authorize()
     {
-        if(Auth::user()->roles == 'admin') {
+        if(Auth::user()->role == 'admin') {
             return true;
         }
 
@@ -29,9 +30,17 @@ class ProductRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'image' => 'required',
             'price' => 'required',
-            'discount' => 'required',
+            'product_image' => 'required'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'Product name must be filled',
+            'price.required' => 'Product price must be filled',
+            'product_image.required' => 'Product image must be filled'
         ];
     }
 }

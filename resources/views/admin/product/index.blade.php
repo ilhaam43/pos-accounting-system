@@ -19,6 +19,18 @@
                     </div>
                     </div>
                 <!-- row -->
+                @if (session('error'))
+                    <div class="alert alert-danger solid ">
+                        <strong>Error!</strong> 
+                        {{ session('error') }}
+                    </div>
+                @endif
+                @if (session('success'))
+                    <div class="alert alert-success solid ">
+                        <strong>Success!</strong> 
+                        {{ session('success') }}
+                    </div>
+                @endif
 
                 <div class="row">
                     <div class="col-12">
@@ -36,11 +48,30 @@
                                                     <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
                                                     </button>
                                                 </div>
-                                                <div class="modal-body">Modal body text goes here.</div>
+                                            <div class="modal-body">
+                                                <form method="POST" action="{{ route('admin.products.store')}}" enctype="multipart/form-data">
+                                                {{ csrf_field() }}
+                                                    <h6> Product Name : </h6>
+                                                    <div class="form-group">
+                                                        <input class="form-control" type="text" name="name" required>
+                                                    </div>
+                                                    <h6> Price : </h6>
+                                                    <div class="form-group">
+                                                        <input class="form-control" type="number" name="price" required>
+                                                    </div>
+                                                    <h6> Product Image : </h6>
+                                                    <div class="form-group">
+                                                    <div class="custom-file">
+                                                        <input type="file" class="custom-file-input" name="product_image" required>
+                                                            <label class="custom-file-label">Choose file</label>
+                                                        </div>
+                                                    </div>
+                                            </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                                    <button type="submit" class="btn btn-primary">Save changes</button>
                                                 </div>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
@@ -51,28 +82,30 @@
                                         <thead>
                                             <tr>
                                                 <th>No</th>
-                                                <th>Product Name</th>
                                                 <th>Product Image</th>
+                                                <th>Product Name</th>
                                                 <th>Price</th>
-                                                <th>Discount</th>
+                                                <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Nomer</td>
-                                                <td>Edinburgh</td>
-                                                <td>61</td>
-                                                <td>2011/04/25</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>Nomer</td>
-                                                <td>Tokyo</td>
-                                                <td>63</td>
-                                                <td>2011/07/25</td>
-                                            </tr>
+                                        @foreach ($product as $products)
+                                        <tr>
+                                            <td>{{ ++$i }}</td>
+                                            <td><img src="{{asset($products->image)}}" width="120" height="120"></img></td>
+                                            <td>{{ $products->name }}</td>
+                                            <td>{{ $products->price }}</td>
+                                            <th>
+                                            <form onsubmit="return confirm('Apakah anda yakin ingin menghapus produk ini ?');" action="{{ route('admin.products.destroy', $products->id) }}" method="POST">
+                                            <a href="{{ route('admin.products.edit', $products->id) }}" class="btn btn-sm btn-secondary btn-rounded">Edit</a>
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-sm btn-danger btn-rounded">Delete</button>
+                                            </form>
+                                            </th>
+                                        </tr>
                                         </tbody>
+                                        @endforeach
                                     </table>
                                 </div>
                             </div>

@@ -20,7 +20,8 @@ class ProductController extends Controller
 
     public function index()
     {
-        return view('admin/product/index');
+        $product = Product::all();
+        return view('admin/product/index', compact('product'))->with('i');
     }
 
     public function store(ProductRequest $request)
@@ -28,8 +29,18 @@ class ProductController extends Controller
         try{    
             $store = $this->service->storeProduct($request);
         }catch(\Throwable $th){
-            return redirect()->route('admin.products.index')->with('error', 'Product data failed to create');
+            return redirect()->route('admin.products.index')->with('error', 'Product data failed to create.');
         }
-        return redirect()->route('admin.products.index')->with('success', 'Product data create successfully');
+        return redirect()->route('admin.products.index')->with('success', 'Product data create successfully.');
+    }
+
+    public function destroy($id)
+    {
+        try{    
+            $destroy = $this->service->destroyProduct($id);
+        }catch(\Throwable $th){
+            return redirect()->route('admin.products.index')->with('error', 'Product data failed to delete.');
+        }
+        return redirect()->route('admin.products.index')->with('success', 'Product data success to delete.');
     }
 }

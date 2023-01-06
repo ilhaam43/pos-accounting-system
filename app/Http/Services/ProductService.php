@@ -4,13 +4,20 @@ namespace App\Http\Services;
 use Illuminate\Support\Facades\Hash;
 
 use App\Models\User;
+use App\Models\Product;
 
 class ProductService
 {
     public function storeProduct($request)
     {
+        $name = $request->file('product_image')->getClientOriginalName();
+        $uploadPhoto = $request->product_image->move(public_path('products/image'), $name);
+        $request['image'] = 'products/image/' . $name;
+
         $storeProduct = Product::create([
-            'name' => $request['name']
+            'name' => $request['name'],
+            'price' => $request['price'],
+            'image' => $request['image']
         ]);
 
         return $storeProduct;
@@ -30,13 +37,12 @@ class ProductService
         }
     }
 
-    public function destroyAdmin($id)
+    public function destroyProduct($id)
     {
-        $admin = User::where('id', $id)->first();
+        $product = Product::where('id', $id)->first();
+        $deletePhotoProduct = unlink($product->image);
+        $destroyProduct = Product::where('id', $id)->delete();
 
-        $destroyAdmin = Admin::where('id',$admin->userable_id)->delete();
-        $destroyUser  = User::where('id', $id)->delete();
-
-        return $destroyUser;
+        return $destroyProduct;
     }
 }
