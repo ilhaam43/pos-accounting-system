@@ -10,6 +10,12 @@ class ProductService
 {
     public function storeProduct($request)
     {
+        //convert rupiah price input to number again
+        $request['price'] = str_replace('Rp. ', '', $request['price']);
+        $request['price'] = str_replace('.', '', $request['price']);
+        $request['price'] = str_replace(',', '.', $request['price']);
+        $request['price'] = intval($request['price']);
+        
         $name = $request->file('product_image')->getClientOriginalName();
         $uploadPhoto = $request->product_image->move(public_path('products/image'), $name);
         $request['image'] = 'products/image/' . $name;

@@ -20,13 +20,17 @@
                     </div>
                 <!-- row -->
                 @if (session('error'))
-                    <div class="alert alert-danger solid ">
+                    <div class="alert alert-danger solid alert-dismissible fade show">
+                        <button type="button" class="close h-100" data-dismiss="alert" aria-label="Close"><span><i class="mdi mdi-close"></i></span>
+                        </button>
                         <strong>Error!</strong> 
                         {{ session('error') }}
                     </div>
                 @endif
                 @if (session('success'))
-                    <div class="alert alert-success solid ">
+                    <div class="alert alert-success solid alert-dismissible fade show">
+                        <button type="button" class="close h-100" data-dismiss="alert" aria-label="Close"><span><i class="mdi mdi-close"></i></span>
+                        </button>
                         <strong>Success!</strong> 
                         {{ session('success') }}
                     </div>
@@ -57,7 +61,7 @@
                                                     </div>
                                                     <h6> Price : </h6>
                                                     <div class="form-group">
-                                                        <input class="form-control" type="number" name="price" required>
+                                                        <input class="form-control" type="text" name="price" id="price" required>
                                                     </div>
                                                     <h6> Product Image : </h6>
                                                     <div class="form-group">
@@ -94,7 +98,7 @@
                                             <td>{{ ++$i }}</td>
                                             <td><img src="{{asset($products->image)}}" width="120" height="120"></img></td>
                                             <td>{{ $products->name }}</td>
-                                            <td>{{ $products->price }}</td>
+                                            <td>@currency($products->price)</td>
                                             <th>
                                             <form onsubmit="return confirm('Apakah anda yakin ingin menghapus produk ini ?');" action="{{ route('admin.products.destroy', $products->id) }}" method="POST">
                                             <a href="{{ route('admin.products.edit', $products->id) }}" class="btn btn-sm btn-secondary btn-rounded">Edit</a>
@@ -122,5 +126,33 @@
             <!-- Datatable -->
             <script src="{{ asset('vendor/datatables/js/jquery.dataTables.min.js') }}"></script>
             <script src="{{ asset('js/plugins-init/datatables.init.js') }}"></script>
+            <script>
+            function formatRupiah(angka, prefix){
+                var number_string = angka.replace(/[^,\d]/g, '').toString(),
+                split           = number_string.split(','),
+                sisa            = split[0].length % 3,
+                rupiah          = split[0].substr(0, sisa),
+                ribuan          = split[0].substr(sisa).match(/\d{3}/gi);
+        
+                // tambahkan titik jika yang di input sudah menjadi angka ribuan
+                if(ribuan){
+                    separator = sisa ? '.' : '';
+                    rupiah += separator + ribuan.join('.');
+                }
+        
+                rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+                return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
+            }
+        
+            // menyiapkan element input dengan id price
+            var price = document.getElementById('price');
+        
+            // menambahkan event keyup
+            price.addEventListener('keyup', function(e){
+                // tambahkan 'Rp.' pada saat form di ketik
+                // gunakan fungsi formatRupiah() untuk mengubah angka yang di ketik menjadi format rupiah
+                price.value = formatRupiah(this.value, 'Rp. ');
+            });
+        </script>
         @endpush
         

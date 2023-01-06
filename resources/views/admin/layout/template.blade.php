@@ -185,7 +185,7 @@
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
                         <i class="icon icon-app-store"></i><span class="nav-text">Product</span></a>
                         <ul aria-expanded="false">
-                            <li><a href="./admin/products">Product List</a></li>
+                            <li><a href="./products">Product List</a></li>
                         </ul>
                     </li>
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
