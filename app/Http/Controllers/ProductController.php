@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\Product;
 use App\Http\Requests\ProductRequest;
+use App\Http\Requests\ProductUpdateRequest;
 use App\Http\Services\ProductService;
 use DataTables;
 
@@ -22,6 +23,43 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         return view('admin/product/index');
+    }
+
+    public function edit($id)
+    {
+        $product = Product::where('id', $id)->first();
+        return view('admin/product/edit', compact('product'));
+    }
+    
+    public function store(ProductRequest $request)
+    {
+        try{    
+            $store = $this->service->storeProduct($request);
+        }catch(\Throwable $th){
+            return redirect()->route('admin.products.index')->with('error', 'Product data failed to create.');
+        }
+        return redirect()->route('admin.products.index')->with('success', 'Product data create successfully.');
+    }
+
+    public function update(ProductUpdateRequest $request, $id)
+    {
+        try{    
+            $update = $this->service->updateProduct($request, $id);
+        }catch(\Throwable $th){
+            return $th;
+            return redirect()->route('admin.products.index')->with('error', 'Product data failed to update.');
+        }
+        return redirect()->route('admin.products.index')->with('success', 'Product data update successfully.');
+    }
+
+    public function destroy($id)
+    {
+        try{    
+            $destroy = $this->service->destroyProduct($id);
+        }catch(\Throwable $th){
+            return response()->json(['success' => false, 'message' => "Product data failed to delete",]);
+        }
+        return response()->json(['success' => true, 'message' => "Product data deleted successfully",]);
     }
 
     public function getProducts(Request $request)
@@ -45,26 +83,5 @@ class ProductController extends Controller
                 ->rawColumns(['action', 'image'])
                 ->make(true);
         }
-    }
-    
-
-    public function store(ProductRequest $request)
-    {
-        try{    
-            $store = $this->service->storeProduct($request);
-        }catch(\Throwable $th){
-            return redirect()->route('admin.products.index')->with('error', 'Product data failed to create.');
-        }
-        return redirect()->route('admin.products.index')->with('success', 'Product data create successfully.');
-    }
-
-    public function destroy($id)
-    {
-        try{    
-            $destroy = $this->service->destroyProduct($id);
-        }catch(\Throwable $th){
-            return response()->json(['success' => false, 'message' => "Product data failed to delete",]);
-        }
-        return response()->json(['success' => true, 'message' => "Product data deleted successfully",]);
     }
 }

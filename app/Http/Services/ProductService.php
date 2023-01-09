@@ -29,17 +29,26 @@ class ProductService
         return $storeProduct;
     }
 
-    public function updateAdmin($request, $id)
-    {
-        $check = empty($request['password']);
+    public function updateProduct($request, $id)
+    {   
+        //check if image uploaded or not
+        if($request['product_image']){
+            //get image data product to delete old image
+            $product = Product::where('id', $id)->first();
+            $deletePhotoProduct = unlink($product->image);
 
-        if($check == 0){
-            $request['password'] = Hash::make($request['password']);
-            $update = User::find($id)->update($request->all());
-            return $update;
-        }elseif($check == 1){
-            $update = User::find($id)->update($request->except(['password', 'confirm_password']));
-            return $update;
+            //upload image to folder
+            $name = $request->file('product_image')->getClientOriginalName();
+            $uploadPhoto = $request->product_image->move(public_path('products/image'), $name);
+            $request['image'] = 'products/image/' . $name;
+
+            //update product data queri
+            $updateProduct = Product::find($id)->update($request->except(['product_image']));
+            return $updateProduct;
+        }else{
+            //update product data queri
+            $updateProduct = Product::find($id)->update($request->except(['product_image']));
+            return $updateProduct;
         }
     }
 
