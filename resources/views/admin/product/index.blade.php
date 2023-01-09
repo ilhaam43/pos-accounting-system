@@ -82,7 +82,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <table id="example" class="display" style="min-width: 845px">
+                                    <table id="dataTable" class="display" style="min-width: 845px">
                                         <thead>
                                             <tr>
                                                 <th>No</th>
@@ -92,24 +92,6 @@
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                        @foreach ($product as $products)
-                                        <tr>
-                                            <td>{{ ++$i }}</td>
-                                            <td><img src="{{asset($products->image)}}" width="120" height="120"></img></td>
-                                            <td>{{ $products->name }}</td>
-                                            <td>@currency($products->price)</td>
-                                            <th>
-                                            <form onsubmit="return confirm('Apakah anda yakin ingin menghapus produk ini ?');" action="{{ route('admin.products.destroy', $products->id) }}" method="POST">
-                                            <a href="{{ route('admin.products.edit', $products->id) }}" class="btn btn-sm btn-secondary btn-rounded">Edit</a>
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-sm btn-danger btn-rounded">Delete</button>
-                                            </form>
-                                            </th>
-                                        </tr>
-                                        </tbody>
-                                        @endforeach
                                     </table>
                                 </div>
                             </div>
@@ -124,8 +106,11 @@
         @endsection
         @push('custom-scripts')
             <!-- Datatable -->
+        @include('admin.product.ajax.deleteProductAjax')
+        @include('admin.product.ajax.showProductAjax')
             <script src="{{ asset('vendor/datatables/js/jquery.dataTables.min.js') }}"></script>
             <script src="{{ asset('js/plugins-init/datatables.init.js') }}"></script>
+            
             <script>
             function formatRupiah(angka, prefix){
                 var number_string = angka.replace(/[^,\d]/g, '').toString(),

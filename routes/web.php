@@ -24,6 +24,8 @@ Route::post('/', [AuthController::class, 'login'])->name('login.process');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Route::get('/', [AuthController::class, 'index'])->name('login');
+
+// This is admin route access
 Route::group(['middleware' => ['auth']], function () {
     Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['checkLogin:admin']], function () {
         
@@ -33,4 +35,9 @@ Route::group(['middleware' => ['auth']], function () {
         
         Route::resource('/products', ProductController::class);
     });
+});
+
+//This is ajax data route
+Route::group(['as' => 'ajax.', 'prefix' => 'ajax', 'middleware' => ['checkLogin:admin']], function () {
+    Route::get('/products', [ProductController::class, 'getProducts'])->name('products');
 });

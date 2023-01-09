@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Redirect;
 use App\Models\Product;
 use App\Http\Requests\ProductRequest;
 use App\Http\Services\ProductService;
+use DataTables;
 
 class ProductController extends Controller
 {
@@ -18,11 +19,34 @@ class ProductController extends Controller
         $this->service = $service;
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $product = Product::all();
-        return view('admin/product/index', compact('product'))->with('i');
+        return view('admin/product/index');
     }
+
+    public function getProducts(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = Product::all();
+            return Datatables::of($data)
+                ->addIndexColumn()
+                ->addColumn('image', function($row){
+                    $asset = asset($row->image);
+                    $image = '<img src="'.$asset.'" width="150" height="150"></img>';
+                    return $image;
+                })
+                ->addColumn('action', function($row){
+                    $routeEdit = route('admin.products.edit', $row->id) ?? '';
+                    $routeDelete = route('admin.products.destroy', $row->id) ?? '';
+                    $btn = '<a href="'.$routeEdit.'" class="edit btn btn-primary btn-sm">Edit</a>
+                    <button class="btn btn-danger btn-sm" data-id="'.$row->id.'" data-action="'.$routeDelete.'" onclick="deleteConfirmation('.$row->id.')"> Delete</button>';
+                    return $btn;
+                })
+                ->rawColumns(['action', 'image'])
+                ->make(true);
+        }
+    }
+    
 
     public function store(ProductRequest $request)
     {
@@ -39,8 +63,8 @@ class ProductController extends Controller
         try{    
             $destroy = $this->service->destroyProduct($id);
         }catch(\Throwable $th){
-            return redirect()->route('admin.products.index')->with('error', 'Product data failed to delete.');
+            return response()->json(['success' => false, 'message' => "Product data failed to delete",]);
         }
-        return redirect()->route('admin.products.index')->with('success', 'Product data success to delete.');
+        return response()->json(['success' => true, 'message' => "Product data deleted successfully",]);
     }
 }
