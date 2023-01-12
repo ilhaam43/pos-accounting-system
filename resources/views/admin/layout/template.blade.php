@@ -188,18 +188,13 @@
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
                         <i class="icon icon-app-store"></i><span class="nav-text">Product</span></a>
                         <ul aria-expanded="false">
-                            <li><a href="./products">Product List</a></li>
+                            <li><a href="{{ route('admin.products.index') }}">Product List</a></li>
                         </ul>
                     </li>
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                        <i class="icon icon-chart-bar-33"></i><span class="nav-text">Charts</span></a>
+                        <i class="icon icon-wallet-90"></i><span class="nav-text">Transactions</span></a>
                         <ul aria-expanded="false">
-                            <li><a href="./chart-flot.html">Flot</a></li>
-                            <li><a href="./chart-morris.html">Morris</a></li>
-                            <li><a href="./chart-chartjs.html">Chartjs</a></li>
-                            <li><a href="./chart-chartist.html">Chartist</a></li>
-                            <li><a href="./chart-sparkline.html">Sparkline</a></li>
-                            <li><a href="./chart-peity.html">Peity</a></li>
+                            <li><a href="{{ route('admin.transactions.index') }}">List Transactions</a></li>
                         </ul>
                     </li>
                     <li class="nav-label">Components</li>

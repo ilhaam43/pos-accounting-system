@@ -5,17 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model
+class TransactionOrder extends Model
 {
     use HasFactory;
 
-    protected $table = 'products';
+    protected $table = 'transaction_orders';
 
     protected $guarded = [
         'id'
     ];
 
-    public function transactionOrder(){
-        return $this->belongsTo(TransactionOrder::class);
+    public function products(){
+        return $this->hasOne(Product::class, 'id', 'product_id');
     }
 }

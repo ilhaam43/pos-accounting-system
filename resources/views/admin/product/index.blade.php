@@ -54,7 +54,7 @@
                                                 </div>
                                             <div class="modal-body">
                                                 <form method="POST" action="{{ route('admin.products.store')}}" enctype="multipart/form-data">
-                                                {{ csrf_field() }}
+                                                @csrf
                                                     <h6> Product Name : </h6>
                                                     <div class="form-group">
                                                         <input class="form-control" type="text" name="name" required>

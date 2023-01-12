@@ -3,29 +3,27 @@ namespace App\Http\Services;
 
 use Illuminate\Support\Facades\Hash;
 
-use App\Models\Product;
+use App\Models\Transaction;
+use App\Models\TransactionProduct;
+use App\Models\TransactionOrder;
 
-class ProductService
+class TransactionService
 {
-    public function storeProduct($request)
+    public function storeOrder($request)
     {
-        //convert rupiah price input to number again
-        $request['price'] = str_replace('Rp. ', '', $request['price']);
-        $request['price'] = str_replace('.', '', $request['price']);
-        $request['price'] = str_replace(',', '.', $request['price']);
-        $request['price'] = intval($request['price']);
-        
-        $name = $request->file('product_image')->getClientOriginalName();
-        $uploadPhoto = $request->product_image->move(public_path('products/image'), $name);
-        $request['image'] = 'products/image/' . $name;
-
-        $storeProduct = Product::create([
-            'name' => $request['name'],
-            'price' => $request['price'],
-            'image' => $request['image']
+        //store product id to transaction order
+        $storeTransactionOrder = TransactionOrder::create([
+            'product_id' => $request['product_id'],
         ]);
 
-        return $storeProduct;
+        return $storeTransactionOrder;
+    }
+
+    public function destroyOrder($id)
+    {
+        $transactionOrderDelete = TransactionOrder::where('id', $id)->delete();
+
+        return $transactionOrderDelete;
     }
 
     public function updateProduct($request, $id)

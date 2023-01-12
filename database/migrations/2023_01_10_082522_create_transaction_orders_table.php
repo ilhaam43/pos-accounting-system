@@ -13,13 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('transactions', function (Blueprint $table) {
+        Schema::create('transaction_orders', function (Blueprint $table) {
             $table->id();
-            $table->string('transaction_code');
-            $table->integer('transaction_total_price');
-            $table->integer('transaction_total_quantity');
-            $table->integer('pay');
-            $table->integer('changes');
+            $table->foreignId('product_id')->nullable()->constrained('products')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -31,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('transactions');
+        Schema::dropIfExists('transaction_cart');
     }
 };

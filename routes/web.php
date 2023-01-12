@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\TransactionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,12 @@ Route::group(['middleware' => ['auth']], function () {
         })->name('index');
         
         Route::resource('/products', ProductController::class);
+        
+        Route::group(['as' => 'transactions.', 'prefix' => 'transactions'], function () {
+            Route::resource('/', TransactionController::class);
+            Route::post('/order', [TransactionController::class, 'storeOrder'])->name('order.store');
+            Route::delete('/order/{id}', [TransactionController::class, 'destroyOrder'])->name('order.destroy');
+        });
     });
 });
 
