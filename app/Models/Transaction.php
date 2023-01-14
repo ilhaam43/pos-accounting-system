@@ -15,7 +15,13 @@ class Transaction extends Model
         'id'
     ];
 
-    public function transactionProduct(){
+    public function transactionProduct()
+    {
         return $this->belongsTo(TransactionProduct::class);
+    }
+
+    public function getCreatedAtAttribute()
+    {
+        return date('d-m-Y', strtotime($this->attributes['created_at']));
     }
 }
