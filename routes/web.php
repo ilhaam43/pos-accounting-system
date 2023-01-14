@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\ExportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +42,13 @@ Route::group(['middleware' => ['auth']], function () {
             Route::post('/order', [TransactionController::class, 'storeOrder'])->name('order.store');
             Route::delete('/order/{id}', [TransactionController::class, 'destroyOrder'])->name('order.destroy');
         });
+    });
+});
+
+//This is export data route
+Route::group(['as' => 'export.', 'prefix' => 'export', 'middleware' => ['checkLogin:admin']], function () {
+    Route::group(['as' => 'pdf.', 'prefix' => 'pdf'], function () {
+        Route::get('/receipt/{id}', [ExportController::class, 'generateReceipt'])->name('receipt');
     });
 });
 

@@ -83,8 +83,8 @@ class TransactionController extends Controller
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($row){
-                    $routeBill = route('admin.transactions.edit', $row->id) ?? '';
-                    $btn = '<a href="'.$routeBill.'" class="edit btn btn-danger btn-rounded">Invoice</a>';
+                    $routeReceipt = route('export.pdf.receipt', $row->id) ?? '';
+                    $btn = '<a href="'.$routeReceipt.'" class="edit btn btn-danger btn-rounded">Invoice</a>';
                     return $btn;
                 })
                 ->rawColumns(['action'])

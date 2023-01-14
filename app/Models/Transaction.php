@@ -15,9 +15,8 @@ class Transaction extends Model
         'id'
     ];
 
-    public function transactionProduct()
-    {
-        return $this->belongsTo(TransactionProduct::class);
+    public function transactionProducts(){
+        return $this->hasMany(TransactionProduct::class, 'transaction_id', 'id');
     }
 
     public function getCreatedAtAttribute()
