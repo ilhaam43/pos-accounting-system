@@ -29,7 +29,30 @@ class TransactionController extends Controller
     {
         $product = Product::all();
         $transactionOrder = TransactionOrder::with('Products')->get();
-        return view('admin/transaction/create', compact('product', 'transactionOrder'))->with('i');
+        $totalPrice = 0;
+        $totalQuantity = 0;
+        
+        //loop for sum total price from transaction order
+        foreach($transactionOrder as $orders){
+            $quantity = $orders->quantity;
+            $price = $orders->products->price;
+            $subtotal = $quantity * $price;
+            $totalQuantity += $quantity;
+            $totalPrice += $subtotal;
+        }
+
+        return view('admin/transaction/create', compact('product', 'transactionOrder', 'totalPrice', 'totalQuantity'))->with('i');
+    }
+
+    public function store(Request $request)
+    {   
+        try{    
+            $store = $this->service->store($request);
+        }catch(\Throwable $th){
+            return $th;
+            return redirect()->route('admin.transactions.index')->with('error', 'Transaction failed to create.');
+        }
+        return redirect()->route('admin.transactions.index')->with('success', 'Transaction create successfully.');
     }
 
     public function storeOrder(Request $request)
@@ -47,7 +70,6 @@ class TransactionController extends Controller
         try{    
             $destroy = $this->service->destroyOrder($id);
         }catch(\Throwable $th){
-            return $th;
             return redirect()->route('admin.transactions.create')->with('error', 'Order data failed to delete.');
         }
         return redirect()->route('admin.transactions.create')->with('success', 'Order data delete successfully.');

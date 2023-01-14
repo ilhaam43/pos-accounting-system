@@ -19,7 +19,7 @@ return new class extends Migration
             $table->integer('transaction_total_price');
             $table->integer('transaction_total_quantity');
             $table->integer('pay');
-            $table->integer('changes');
+            $table->integer('change');
             $table->timestamps();
         });
     }

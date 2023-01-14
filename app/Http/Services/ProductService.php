@@ -15,10 +15,12 @@ class ProductService
         $request['price'] = str_replace(',', '.', $request['price']);
         $request['price'] = intval($request['price']);
         
+        //logic to uplod photo products
         $name = $request->file('product_image')->getClientOriginalName();
         $uploadPhoto = $request->product_image->move(public_path('products/image'), $name);
         $request['image'] = 'products/image/' . $name;
 
+        //store product data
         $storeProduct = Product::create([
             'name' => $request['name'],
             'price' => $request['price'],
@@ -41,20 +43,23 @@ class ProductService
             $uploadPhoto = $request->product_image->move(public_path('products/image'), $name);
             $request['image'] = 'products/image/' . $name;
 
-            //update product data queri
+            //update product data query
             $updateProduct = Product::find($id)->update($request->except(['product_image']));
             return $updateProduct;
         }else{
-            //update product data queri
+            //update product data query
             $updateProduct = Product::find($id)->update($request->except(['product_image']));
             return $updateProduct;
         }
     }
 
     public function destroyProduct($id)
-    {
+    {   
+        //logic to get product by id to destroy
         $product = Product::where('id', $id)->first();
+        //logic to delete photo product by id
         $deletePhotoProduct = unlink($product->image);
+        //logic to delete product data by id
         $destroyProduct = Product::where('id', $id)->delete();
 
         return $destroyProduct;
