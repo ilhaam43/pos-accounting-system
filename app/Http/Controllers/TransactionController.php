@@ -10,6 +10,7 @@ use App\Http\Services\TransactionService;
 use App\Models\Transaction;
 use App\Models\TransactionProduct;
 use App\Models\TransactionOrder;
+use DataTables;
 
 class TransactionController extends Controller
 {
@@ -73,5 +74,21 @@ class TransactionController extends Controller
             return redirect()->route('admin.transactions.create')->with('error', 'Order data failed to delete.');
         }
         return redirect()->route('admin.transactions.create')->with('success', 'Order data delete successfully.');
+    }
+
+    public function getTransactions(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = Transaction::all();
+            return Datatables::of($data)
+                ->addIndexColumn()
+                ->addColumn('action', function($row){
+                    $routeBill = route('admin.transactions.edit', $row->id) ?? '';
+                    $btn = '<a href="'.$routeBill.'" class="edit btn btn-danger btn-rounded">Invoice</a>';
+                    return $btn;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
     }
 }

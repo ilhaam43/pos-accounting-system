@@ -47,4 +47,6 @@ Route::group(['middleware' => ['auth']], function () {
 //This is ajax data route
 Route::group(['as' => 'ajax.', 'prefix' => 'ajax', 'middleware' => ['checkLogin:admin']], function () {
     Route::get('/products', [ProductController::class, 'getProducts'])->name('products');
+    Route::get('/transactions', [TransactionController::class, 'getTransactions'])->name('transactions');
 });
+

@@ -50,9 +50,12 @@
                                         <thead>
                                             <tr>
                                                 <th>No</th>
-                                                <th>Product Image</th>
-                                                <th>Product Name</th>   
-                                                <th>Price</th>
+                                                <th>Transaction Code</th>
+                                                <th>Total Price</th>   
+                                                <th>Total Quantity</th>
+                                                <th>Pay</th>
+                                                <th>Change</th>
+                                                <th>Date</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -70,8 +73,7 @@
         @endsection
         @push('custom-scripts')
             <!-- Datatable -->
-        @include('admin.product.ajax.deleteProductAjax')
-        @include('admin.product.ajax.showProductAjax')
+        @include('admin.transaction.ajax.showTransactionAjax')
             <script src="{{ asset('vendor/datatables/js/jquery.dataTables.min.js') }}"></script>
             <script src="{{ asset('js/plugins-init/datatables.init.js') }}"></script>
         @endpush
