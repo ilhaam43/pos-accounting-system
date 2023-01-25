@@ -5,18 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Transaction extends Model
+class SalesTransaction extends Model
 {
     use HasFactory;
 
-    protected $table = 'transactions';
+    protected $table = 'sales_transactions';
 
     protected $guarded = [
         'id'
     ];
 
-    public function transactionProducts(){
-        return $this->hasMany(TransactionProduct::class, 'transaction_id', 'id');
+    public function salesTransactionDetail(){
+        return $this->hasMany(SalesTransactionDetail::class, 'transaction_id', 'id');
     }
 
     public function getCreatedAtAttribute()

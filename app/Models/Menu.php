@@ -5,17 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model
+class Menu extends Model
 {
     use HasFactory;
 
-    protected $table = 'products';
+    protected $table = 'menus';
 
     protected $guarded = [
         'id'
     ];
 
-    public function transactionOrder(){
-        return $this->belongsTo(TransactionOrder::class);
+    public function salesTransactionOrder(){
+        return $this->belongsTo(SalesTransactionOrder::class);
     }
 }
