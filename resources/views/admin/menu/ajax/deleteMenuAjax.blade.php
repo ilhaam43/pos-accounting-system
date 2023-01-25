@@ -1,7 +1,7 @@
 <script>
 function deleteConfirmation(id) {
     swal({
-        title: "Delete product data",
+        title: "Delete menu data",
         text: "Are you sure to delete this data?",
         type: "warning",
         showCancelButton: !0,
@@ -13,14 +13,14 @@ function deleteConfirmation(id) {
             var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
             $.ajax({
                 type: 'POST',
-                url: "/admin/products/" + id,
+                url: "/admin/menus/" + id,
                 data: {_token: CSRF_TOKEN, _method: 'DELETE'},
                 dataType: 'JSON',
                 success: function (results) {
                     if (results.success === true) {
                         swal("Done!", results.message, "success");
                         window.setTimeout(function(){ 
-                            window.location.replace('/admin/products');
+                            window.location.replace('/admin/menus');
                         }, 2000);
                     } else {
                         swal("Error!", results.message, "error");

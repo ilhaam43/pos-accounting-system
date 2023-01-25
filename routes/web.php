@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\MenuController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\ExportController;
 
@@ -35,7 +35,7 @@ Route::group(['middleware' => ['auth']], function () {
             return view('admin/index');
         })->name('index');
         
-        Route::resource('/products', ProductController::class);
+        Route::resource('/menus', MenuController::class);
         
         Route::group(['as' => 'transactions.', 'prefix' => 'transactions'], function () {
             Route::resource('/', TransactionController::class);
@@ -54,7 +54,7 @@ Route::group(['as' => 'export.', 'prefix' => 'export', 'middleware' => ['checkLo
 
 //This is ajax data route
 Route::group(['as' => 'ajax.', 'prefix' => 'ajax', 'middleware' => ['checkLogin:admin']], function () {
-    Route::get('/products', [ProductController::class, 'getProducts'])->name('products');
+    Route::get('/menuss', [MenuController::class, 'getMenus'])->name('menus');
     Route::get('/transactions', [TransactionController::class, 'getTransactions'])->name('transactions');
 });
 

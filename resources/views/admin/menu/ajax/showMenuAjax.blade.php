@@ -5,7 +5,7 @@
         $('#dataTable').DataTable({
             processing: true,
             serverSide: true,
-            ajax: "{{route('ajax.products')}}",
+            ajax: "{{route('ajax.menus')}}",
             "lengthMenu": [ 10, 20, 30, 50 ],
             columns: [
 

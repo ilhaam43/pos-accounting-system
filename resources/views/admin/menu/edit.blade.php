@@ -8,13 +8,13 @@
                 <div class="row page-titles mx-0">
                     <div class="col-sm-6 p-md-0">
                         <div class="welcome-text">
-                            <h4>List Menu Penjualan</h4>
+                            <h4>Edit Menu Data</h4>
                             <span class="ml-1"></span>
                         </div>
                     </div>
                     <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="javascript:void(0)">List Menu Penjualan</a></li>
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">Edit Menu Data</a></li>
                         </ol>
                     </div>
                     </div>
@@ -40,59 +40,35 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">List Menu Penjualan</h4>
-                                <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-primary btn-rounded" data-toggle="modal" data-target="#basicModal">Tambah Menu</button>
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="basicModal">
-                                        <div class="modal-dialog" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title">Tambah Menu</h5>
-                                                    <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
-                                                    </button>
-                                                </div>
-                                            <div class="modal-body">
-                                                <form method="POST" action="{{ route('admin.products.store')}}" enctype="multipart/form-data">
-                                                @csrf
-                                                    <h6> Nama : </h6>
-                                                    <div class="form-group">
-                                                        <input class="form-control" type="text" name="name" required>
-                                                    </div>
-                                                    <h6> Harga : </h6>
-                                                    <div class="form-group">
-                                                        <input class="form-control" type="text" name="price" id="price" required>
-                                                    </div>
-                                                    <h6> Gambar : </h6>
-                                                    <div class="form-group">
+                                <h4 class="card-title">Edit Menu Data</h4>
+                            </div>
+                            <div class="card-body">
+                            <div class="basic-form">
+                                    <form method="POST" action="{{ route('admin.menus.update', $menu->id )}}" enctype="multipart/form-data">
+                                    @csrf
+                                    @method('PUT')
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label>Menu Name</label>
+                                                <input type="text" class="form-control" value="{{$menu->name}}" name="name">
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label>Menu Price</label>
+                                                <input type="number" class="form-control" value="{{$menu->price}}"name="price">
+                                            </div>
+                                            <div class="form-group col-md-12">
+                                                <label>Menu Image</label>
+                                                <div class="form-group">
                                                     <div class="custom-file">
-                                                        <input type="file" class="custom-file-input" name="product_image" required>
+                                                        <input type="file" class="custom-file-input" name="menu_image">
                                                             <label class="custom-file-label">Pilih Gambar</label>
                                                         </div>
                                                     </div>
                                             </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
-                                                    <button type="submit" class="btn btn-primary">Simpan</button>
-                                                </div>
-                                                </form>
-                                            </div>
                                         </div>
-                                    </div>
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table id="dataTable" class="display" style="min-width: 845px">
-                                        <thead>
-                                            <tr>
-                                                <th>No</th>
-                                                <th>Gambar</th>
-                                                <th>Nama</th>
-                                                <th>Harga</th>
-                                                <th>Aksi</th>
-                                            </tr>
-                                        </thead>
-                                    </table>
+                                        <a href="{{route('admin.menus.index')}}" class="btn btn-danger">Batal</a>
+                                        <button type="submit" class="btn btn-primary">Simpan</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -106,8 +82,6 @@
         @endsection
         @push('custom-scripts')
             <!-- Datatable -->
-        @include('admin.product.ajax.deleteProductAjax')
-        @include('admin.product.ajax.showProductAjax')
             <script src="{{ asset('vendor/datatables/js/jquery.dataTables.min.js') }}"></script>
             <script src="{{ asset('js/plugins-init/datatables.init.js') }}"></script>
             

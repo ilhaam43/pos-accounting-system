@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
-class ProductRequest extends FormRequest
+class MenuUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -31,16 +31,14 @@ class ProductRequest extends FormRequest
         return [
             'name' => 'required',
             'price' => 'required',
-            'product_image' => 'required'
         ];
     }
 
     public function messages()
     {
         return [
-            'name.required' => 'Product name must be filled',
-            'price.required' => 'Product price must be filled',
-            'product_image.required' => 'Product image must be filled'
+            'name.required' => 'Menu name must be filled',
+            'price.required' => 'Menu price must be filled',
         ];
     }
 }
