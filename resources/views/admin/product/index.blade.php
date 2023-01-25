@@ -8,13 +8,13 @@
                 <div class="row page-titles mx-0">
                     <div class="col-sm-6 p-md-0">
                         <div class="welcome-text">
-                            <h4>Product List</h4>
+                            <h4>List Menu Penjualan</h4>
                             <span class="ml-1"></span>
                         </div>
                     </div>
                     <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="javascript:void(0)">Product List</a></li>
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">List Menu Penjualan</a></li>
                         </ol>
                     </div>
                     </div>
@@ -40,40 +40,40 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">Product List</h4>
+                                <h4 class="card-title">List Menu Penjualan</h4>
                                 <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-primary btn-rounded" data-toggle="modal" data-target="#basicModal">Create Product</button>
+                                <button type="button" class="btn btn-primary btn-rounded" data-toggle="modal" data-target="#basicModal">Tambah Menu</button>
                                     <!-- Modal -->
                                     <div class="modal fade" id="basicModal">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title">Create Product</h5>
+                                                    <h5 class="modal-title">Tambah Menu</h5>
                                                     <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
                                                     </button>
                                                 </div>
                                             <div class="modal-body">
                                                 <form method="POST" action="{{ route('admin.products.store')}}" enctype="multipart/form-data">
                                                 @csrf
-                                                    <h6> Product Name : </h6>
+                                                    <h6> Nama : </h6>
                                                     <div class="form-group">
                                                         <input class="form-control" type="text" name="name" required>
                                                     </div>
-                                                    <h6> Price : </h6>
+                                                    <h6> Harga : </h6>
                                                     <div class="form-group">
                                                         <input class="form-control" type="text" name="price" id="price" required>
                                                     </div>
-                                                    <h6> Product Image : </h6>
+                                                    <h6> Gambar : </h6>
                                                     <div class="form-group">
                                                     <div class="custom-file">
                                                         <input type="file" class="custom-file-input" name="product_image" required>
-                                                            <label class="custom-file-label">Choose file</label>
+                                                            <label class="custom-file-label">Pilih Gambar</label>
                                                         </div>
                                                     </div>
                                             </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
+                                                    <button type="submit" class="btn btn-primary">Simpan</button>
                                                 </div>
                                                 </form>
                                             </div>
@@ -86,10 +86,10 @@
                                         <thead>
                                             <tr>
                                                 <th>No</th>
-                                                <th>Product Image</th>
-                                                <th>Product Name</th>
-                                                <th>Price</th>
-                                                <th>Action</th>
+                                                <th>Gambar</th>
+                                                <th>Nama</th>
+                                                <th>Harga</th>
+                                                <th>Aksi</th>
                                             </tr>
                                         </thead>
                                     </table>

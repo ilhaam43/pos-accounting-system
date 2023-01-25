@@ -86,8 +86,8 @@
                                                 <td><img src="{{asset($orders->products->image)}}" width="120" height="120"></td>
                                                 <td><h6>{{ $orders->products->name }}</h6></td>
                                                 <td><h6>{{ $orders->quantity }}</h6></td>
-                                                <td><h6>Rp. {{ $orders->products->price }}</h6></td>
-                                                <td><h6>Rp. {{ $orders->products->price * $orders->quantity }}</h6></td>
+                                                <td><h6>Rp. {{ number_format($orders->products->price, 2, ",", ".") ?? 0 }}</h6></td>
+                                                <td><h6>Rp. {{ number_format($orders->products->price * $orders->quantity, 2, ",", ".") ?? '' }}</h6></td>
                                                 <td>
                                                 <form onsubmit="return confirm('Apakah anda yakin ingin menghapus produk ini ?');" action="{{ route('admin.transactions.order.destroy', $orders->id) }}" method="POST">
                                                 @csrf
@@ -131,7 +131,7 @@
                                         </div>
                                         <div class="col-lg-2">
                                             <h6> Total Price </h6>
-                                            <h4> Rp. {{ $totalPrice ?? 0 }} </h4>
+                                            <h5> Rp. {{ number_format($totalPrice, 2, ",", ".") ?? 0 }} </h5>
                                         </div>
                                         <div class="col-lg-12">
                                             <button type="submit" class="btn btn-primary btn-rounded">Submit Order</button>

@@ -82,6 +82,18 @@ class TransactionController extends Controller
             $data = Transaction::all();
             return Datatables::of($data)
                 ->addIndexColumn()
+                ->addColumn('transaction_total_price', function($row){
+                    $totalPrice = 'Rp.'.number_format($row->transaction_total_price, 2, ",", ".");
+                    return $totalPrice;
+                })
+                ->addColumn('pay', function($row){
+                    $pay = 'Rp.'.number_format($row->pay, 2, ",", ".");
+                    return $pay;
+                })
+                ->addColumn('change', function($row){
+                    $change = 'Rp.'.number_format($row->change, 2, ",", ".");
+                    return $change;
+                })
                 ->addColumn('action', function($row){
                     $routeReceipt = route('export.pdf.receipt', $row->id) ?? '';
                     $btn = '<a href="'.$routeReceipt.'" class="edit btn btn-danger btn-rounded">Invoice</a>';

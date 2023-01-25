@@ -64,10 +64,15 @@ class ProductController extends Controller
 
     public function getProducts(Request $request)
     {
+       // Rp. {{ number_format($transaction->transaction_total_price, 2, ",", ".") }}
         if ($request->ajax()) {
             $data = Product::all();
             return Datatables::of($data)
                 ->addIndexColumn()
+                ->addColumn('price', function($row){
+                    $price = 'Rp.'.number_format($row->price, 2, ",", ".");
+                    return $price;
+                })
                 ->addColumn('image', function($row){
                     $asset = asset($row->image);
                     $image = '<img src="'.$asset.'" width="150" height="150"></img>';
