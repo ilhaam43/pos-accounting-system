@@ -76,52 +76,49 @@
     float: left;" alt="Logo">
             <h1></h1>
             <h1>Warungnya Eyang</h1><br>
-            <p align="left">Address : Jl. Teratai, Srengseng Sawah, Kec. Jagakarsa, Kota Jakarta Selatan</p>
-            <p align="left">Phone : 082213686190</p><br>
-            <p align="left">Transaction Code: {{ $transaction->transaction_code }}</p>
-            <p align="left">Date: {{ $transaction->created_at }}</p>
+            <p align="left">Alamat : Jl. Teratai, Srengseng Sawah, Kec. Jagakarsa, Kota Jakarta Selatan</p>
+            <p align="left">No HP : 082213686190</p><br>
+            <p align="left">Kode Transaksi : {{ $salesTransaction->transaction_code }}</p>
+            <p align="left">Tanggal : {{ $salesTransaction->created_at }}</p>
         </div>
         <div class="receipt-body">
             <table>
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Product Name</th>
-                        <th>Price</th>
-                        <th>Quantity</th>
-                        <th>Subtotal Price</th>
+                        <th>Nama Menu</th>
+                        <th>Harga</th>
+                        <th>Kuantitas</th>
+                        <th>Total Harga</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($transaction->transactionProducts as $index => $products)
+                    @foreach($salesTransaction->salesTransactionDetail as $index => $menus)
                     <tr>
                         <td>{{ $index + 1 }}</td>
-                        <td>{{ $products->product_name }}</td>
-                        <td>Rp. {{ number_format($products->price, 2, ",", ".") }}</td>
-                        <td>{{ $products->quantity }}</td>
-                        <td>Rp. {{ number_format($products->total_price, 2, ",", ".") }}</td>
+                        <td>{{ $menus->menu_name }}</td>
+                        <td>Rp. {{ number_format($menus->price, 2, ",", ".") }}</td>
+                        <td>{{ $menus->quantity }}</td>
+                        <td>Rp. {{ number_format($menus->total_price, 2, ",", ".") }}</td>
                     </tr>
                     @endforeach
                 </tbody>
                 <tfoot>
                     <tr>
-                        <td colspan="4"><b>Total Price</b></td>
-                        <td>Rp. {{ number_format($transaction->transaction_total_price, 2, ",", ".") }}</td>
+                        <td colspan="4"><b>Total Harga</b></td>
+                        <td>Rp. {{ number_format($salesTransaction->transaction_total_price, 2, ",", ".") }}</td>
                     </tr>
                     <tr>
-                        <td colspan="4"><b>Pay</b></td>
-                        <td>Rp. {{ number_format($transaction->pay, 2, ",", ".") }}</td>
+                        <td colspan="4"><b>Bayar</b></td>
+                        <td>Rp. {{ number_format($salesTransaction->pay, 2, ",", ".") }}</td>
                     </tr>
                     <tr>
-                        <td colspan="4"><b>Change</b></td>
-                        <td>Rp. {{ number_format($transaction->change, 2, ",", ".") }}</td>
+                        <td colspan="4"><b>Kembalian</b></td>
+                        <td>Rp. {{ number_format($salesTransaction->change, 2, ",", ".") }}</td>
                     </tr>
                 </tfoot>
             </table>
         </div>
-            <div class="receipt-footer">
-                <p>Thanks for coming, we'll wait for your repeat order!</p>
-            </div>
         </div>
     </body>
 </html>

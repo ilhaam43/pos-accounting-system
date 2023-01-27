@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MenuController;
-use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\SalesTransactionController;
 use App\Http\Controllers\ExportController;
 
 /*
@@ -37,10 +37,10 @@ Route::group(['middleware' => ['auth']], function () {
         
         Route::resource('/menus', MenuController::class);
         
-        Route::group(['as' => 'transactions.', 'prefix' => 'transactions'], function () {
-            Route::resource('/', TransactionController::class);
-            Route::post('/order', [TransactionController::class, 'storeOrder'])->name('order.store');
-            Route::delete('/order/{id}', [TransactionController::class, 'destroyOrder'])->name('order.destroy');
+        Route::group(['as' => 'sales-transactions.', 'prefix' => 'sales-transactions'], function () {
+            Route::resource('/', SalesTransactionController::class);
+            Route::post('/order', [SalesTransactionController::class, 'storeOrder'])->name('order.store');
+            Route::delete('/order/{id}', [SalesTransactionController::class, 'destroyOrder'])->name('order.destroy');
         });
     });
 });
@@ -54,7 +54,7 @@ Route::group(['as' => 'export.', 'prefix' => 'export', 'middleware' => ['checkLo
 
 //This is ajax data route
 Route::group(['as' => 'ajax.', 'prefix' => 'ajax', 'middleware' => ['checkLogin:admin']], function () {
-    Route::get('/menuss', [MenuController::class, 'getMenus'])->name('menus');
-    Route::get('/transactions', [TransactionController::class, 'getTransactions'])->name('transactions');
+    Route::get('/menus', [MenuController::class, 'getMenus'])->name('menus');
+    Route::get('/sales-transactions', [SalesTransactionController::class, 'getSalesTransactions'])->name('sales-transactions');
 });
 

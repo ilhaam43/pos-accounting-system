@@ -122,7 +122,7 @@
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
                         <i class="icon icon-wallet-90"></i><span class="nav-text">Transaksi Penjualan</span></a>
                         <ul aria-expanded="false">
-                            <li><a href="{{ route('admin.transactions.index') }}">List Penjualan</a></li>
+                            <li><a href="{{ route('admin.sales-transactions.index') }}">List Penjualan</a></li>
                         </ul>
                     </li>
                     

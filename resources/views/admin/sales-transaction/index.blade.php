@@ -8,13 +8,13 @@
                 <div class="row page-titles mx-0">
                     <div class="col-sm-6 p-md-0">
                         <div class="welcome-text">
-                            <h4>Transaction List</h4>
+                            <h4>List Transaksi Penjualan</h4>
                             <span class="ml-1"></span>
                         </div>
                     </div>
                     <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="javascript:void(0)">Transaction List</a></li>
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">List Transaksi Penjualan</a></li>
                         </ol>
                     </div>
                     </div>
@@ -40,9 +40,9 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">Transaction List</h4>
+                                <h4 class="card-title">Transaksi Penjualan</h4>
                                 <!-- Button trigger modal -->
-                                <a href="{{ route('admin.transactions.create') }}" class="btn btn-rounded btn-primary">Create Transaction</a>
+                                <a href="{{ route('admin.sales-transactions.create') }}" class="btn btn-rounded btn-primary">Tambah Pesanan</a>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -50,13 +50,13 @@
                                         <thead>
                                             <tr>
                                                 <th>No</th>
-                                                <th>Transaction Code</th>
-                                                <th>Total Price</th>   
-                                                <th>Total Quantity</th>
-                                                <th>Pay</th>
-                                                <th>Change</th>
-                                                <th>Date</th>
-                                                <th>Action</th>
+                                                <th>Kode Transaksi</th>
+                                                <th>Total Harga</th>   
+                                                <th>Total Kuantitas</th>
+                                                <th>Pembayaran</th>
+                                                <th>Kembalian</th>
+                                                <th>Tanggal</th>
+                                                <th>Aksi</th>
                                             </tr>
                                         </thead>
                                     </table>
@@ -73,7 +73,7 @@
         @endsection
         @push('custom-scripts')
             <!-- Datatable -->
-        @include('admin.transaction.ajax.showTransactionAjax')
+        @include('admin.sales-transaction.ajax.showSalesTransactionAjax')
             <script src="{{ asset('vendor/datatables/js/jquery.dataTables.min.js') }}"></script>
             <script src="{{ asset('js/plugins-init/datatables.init.js') }}"></script>
         @endpush

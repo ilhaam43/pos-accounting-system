@@ -5,17 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
-use App\Models\Transaction;
-use App\Models\TransactionProduct;
+use App\Models\SalesTransaction;
+use App\Models\SalesTransactionDetail;
 use Mpdf\Mpdf;
 
 class ExportController extends Controller
 {
     public function generateReceipt($transactionId)
     {
-        $transaction = Transaction::where('id', $transactionId)->with('transactionProducts')->first();
+        $salesTransaction = SalesTransaction::where('id', $transactionId)->with('salesTransactionDetail')->first();
         $mpdf = new Mpdf();
-        $mpdf->WriteHTML(view('pdf/receipt', compact('transaction'))->render());
+        $mpdf->WriteHTML(view('pdf/receipt', compact('salesTransaction'))->render());
         $mpdf->Output('receipt.pdf', 'I');
     }
 }

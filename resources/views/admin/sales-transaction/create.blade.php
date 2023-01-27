@@ -8,13 +8,13 @@
                 <div class="row page-titles mx-0">
                     <div class="col-sm-6 p-md-0">
                         <div class="welcome-text">
-                            <h4>Create Transactions</h4>
+                            <h4>Order Transaksi Penjualan</h4>
                             <span class="ml-1"></span>
                         </div>
                     </div>
                     <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="javascript:void(0)">Create Transactions</a></li>
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">Order Transaksi Penjualan</a></li>
                         </ol>
                     </div>
                     </div>
@@ -45,14 +45,14 @@
 
                             <div class="card-body">
                             <div class="basic-form">
-                                <form class="form-inline" method="POST" action="{{ route('admin.transactions.order.store') }}">
+                                <form class="form-inline" method="POST" action="{{ route('admin.sales-transactions.order.store') }}">
                                 @csrf
                                         <div class="form-group mb-2">
-                                            <label class="sr-only">Product</label>
-                                            <select type="text" class="form-control" name="product_id" required>
-                                            <option selected>Choose Product...</option>
-                                                @foreach($product as $products) 
-                                                    <option value="{{$products->id}}">{{$products->name}}</option>
+                                            <label class="sr-only">Menu</label>
+                                            <select type="text" class="form-control" name="menu_id" required>
+                                            <option selected>Choose Menu...</option>
+                                                @foreach($menu as $menus) 
+                                                    <option value="{{$menus->id}}">{{$menus->name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -70,8 +70,8 @@
                                         <thead class="thead-primary">
                                             <tr>
                                                 <th width="5%">No.</th>
-                                                <th scope="col">Product Image</th>
-                                                <th scope="col">Product Name</th>
+                                                <th scope="col">Menu Image</th>
+                                                <th scope="col">Menu Name</th>
                                                 <th scope="col">Quantity</th>
                                                 <th scope="col">Price</th>
                                                 <th scope="col">Subtotal Price</th>
@@ -80,44 +80,44 @@
                                         </thead>
                                         <tbody>
                                             @csrf
-                                            @foreach($transactionOrder as $orders)
+                                            @foreach($salesTransactionOrder as $orders)
                                             <tr>
                                                 <th>{{ ++$i }}</th>
-                                                <td><img src="{{asset($orders->products->image)}}" width="120" height="120"></td>
-                                                <td><h6>{{ $orders->products->name }}</h6></td>
+                                                <td><img src="{{asset($orders->menu->image)}}" width="120" height="120"></td>
+                                                <td><h6>{{ $orders->menu->name }}</h6></td>
                                                 <td><h6>{{ $orders->quantity }}</h6></td>
-                                                <td><h6>Rp. {{ number_format($orders->products->price, 2, ",", ".") ?? 0 }}</h6></td>
-                                                <td><h6>Rp. {{ number_format($orders->products->price * $orders->quantity, 2, ",", ".") ?? '' }}</h6></td>
+                                                <td><h6>Rp. {{ number_format($orders->menu->price, 2, ",", ".") ?? 0 }}</h6></td>
+                                                <td><h6>Rp. {{ number_format($orders->menu->price * $orders->quantity, 2, ",", ".") ?? '' }}</h6></td>
                                                 <td>
-                                                <form onsubmit="return confirm('Apakah anda yakin ingin menghapus produk ini ?');" action="{{ route('admin.transactions.order.destroy', $orders->id) }}" method="POST">
+                                                <form onsubmit="return confirm('Apakah anda yakin ingin menghapus menu ini ?');" action="{{ route('admin.sales-transactions.order.destroy', $orders->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                                <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
                                                 </form>
                                                 </td>
                                             </tr>
                                             @endforeach
                                         </tbody>
                                     </table>
-                                    <form method="POST" action="{{ route('admin.transactions.store') }}">
+                                    <form method="POST" action="{{ route('admin.sales-transactions.store') }}">
                                     @csrf
                                     <div class="row">
                                         <div class="col-lg-4">
                                             <div class="basic-form">
                                                 <div class="form-group row">
-                                                    <label class="col-sm-4 col-form-label"><h6> Pay :</h6></label>
+                                                    <label class="col-sm-4 col-form-label"><h6> Bayar :</h6></label>
                                                     <div class="col-sm-8">
                                                         <input type="string" class="form-control sum" name="pay" id="pay">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
-                                                    <label class="col-sm-4 col-form-label"><h6>Change :</h6></label>
+                                                    <label class="col-sm-4 col-form-label"><h6> Kembalian :</h6></label>
                                                     <div class="col-sm-8">
-                                                        @foreach($transactionOrder as $orderProducts)
-                                                            <input type="hidden" name="product_name[]" value="{{ $orderProducts->products->name }}">
-                                                            <input type="hidden" name="product_price[]" value="{{ $orderProducts->products->price }}">
-                                                            <input type="hidden" name="quantity_products[]" value="{{ $orderProducts->quantity }}">
-                                                            <input type="hidden" name="total_price[]" value="{{ $orderProducts->products->price * $orderProducts->quantity }}">
+                                                        @foreach($salesTransactionOrder as $orderMenus)
+                                                            <input type="hidden" name="menu_name[]" value="{{ $orderMenus->menu->name }}">
+                                                            <input type="hidden" name="menu_price[]" value="{{ $orderMenus->menu->price }}">
+                                                            <input type="hidden" name="quantity_menus[]" value="{{ $orderMenus->quantity }}">
+                                                            <input type="hidden" name="total_price[]" value="{{ $orderMenus->menu->price * $orderMenus->quantity }}">
                                                         @endforeach
                                                         <input type="string" class="form-control" name="result" id="result" disabled>
                                                         <input type="hidden" name="change" id="change">
