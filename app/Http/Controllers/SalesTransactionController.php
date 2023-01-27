@@ -66,6 +66,16 @@ class SalesTransactionController extends Controller
         return redirect()->route('admin.sales-transactions.create')->with('success', 'Data pemesanan berhasil dibuat.');
     }
 
+    public function destroy($id)
+    {
+        try{
+            $destroy = $this->service->destroy($id);
+        }catch(\Throwable $th){
+            return response()->json(['success' => false, 'message' => "Data transaksi penjualan gagal dihapus.",]);
+        }
+        return response()->json(['success' => true, 'message' => "Data transaksi penjualan berhasil dihapus.",]);
+    }
+
     public function destroyOrder($id)
     {
         try{    
@@ -96,7 +106,9 @@ class SalesTransactionController extends Controller
                 })
                 ->addColumn('action', function($row){
                     $routeReceipt = route('export.pdf.receipt', $row->id) ?? '';
-                    $btn = '<a href="'.$routeReceipt.'" class="edit btn btn-danger btn-rounded">Struk</a>';
+                    $routeDelete = route('admin.sales-transactions.destroy', $row->id) ?? '';
+                    $btn = '<a href="'.$routeReceipt.'" class="edit btn btn-primary btn-rounded">Struk</a></br></br>
+                    <button class="btn btn-danger btn-rounded" data-id="'.$row->id.'" data-action="'.$routeDelete.'" onclick="deleteConfirmation('.$row->id.')">Hapus</button>';
                     return $btn;
                 })
                 ->rawColumns(['action'])

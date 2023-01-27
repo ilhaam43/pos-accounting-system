@@ -36,9 +36,9 @@ Route::group(['middleware' => ['auth']], function () {
         })->name('index');
         
         Route::resource('/menus', MenuController::class);
+        Route::resource('/sales-transactions', SalesTransactionController::class);
         
         Route::group(['as' => 'sales-transactions.', 'prefix' => 'sales-transactions'], function () {
-            Route::resource('/', SalesTransactionController::class);
             Route::post('/order', [SalesTransactionController::class, 'storeOrder'])->name('order.store');
             Route::delete('/order/{id}', [SalesTransactionController::class, 'destroyOrder'])->name('order.destroy');
         });

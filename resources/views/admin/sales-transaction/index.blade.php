@@ -74,6 +74,7 @@
         @push('custom-scripts')
             <!-- Datatable -->
         @include('admin.sales-transaction.ajax.showSalesTransactionAjax')
+        @include('admin.sales-transaction.ajax.deleteSalesTransactionAjax')
             <script src="{{ asset('vendor/datatables/js/jquery.dataTables.min.js') }}"></script>
             <script src="{{ asset('js/plugins-init/datatables.init.js') }}"></script>
         @endpush

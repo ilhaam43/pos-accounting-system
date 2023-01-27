@@ -71,10 +71,21 @@ class SalesTransactionService
         return $storeSalesTransactionOrder;
     }
 
+    public function destroy($id)
+    {
+        //find sales transaction data by id then delete the data
+        $salesTransaction = SalesTransaction::find($id);
+        $salesTransaction->delete();
+
+        return true;
+    }
+
     public function destroyOrder($id)
     {
+        //find sales transaction order by id then delete the data
         $salesTransactionOrder = SalesTransactionOrder::find($id);
         $salesTransactionOrder->delete();
+
         return true;
     }
 }

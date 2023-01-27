@@ -8,13 +8,13 @@
                 <div class="row page-titles mx-0">
                     <div class="col-sm-6 p-md-0">
                         <div class="welcome-text">
-                            <h4>Order Transaksi Penjualan</h4>
+                            <h4>Pesanan Transaksi Penjualan</h4>
                             <span class="ml-1"></span>
                         </div>
                     </div>
                     <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="javascript:void(0)">Order Transaksi Penjualan</a></li>
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">Pesanan Transaksi Penjualan</a></li>
                         </ol>
                     </div>
                     </div>
@@ -50,7 +50,7 @@
                                         <div class="form-group mb-2">
                                             <label class="sr-only">Menu</label>
                                             <select type="text" class="form-control" name="menu_id" required>
-                                            <option selected>Choose Menu...</option>
+                                            <option selected>Pilih Menu...</option>
                                                 @foreach($menu as $menus) 
                                                     <option value="{{$menus->id}}">{{$menus->name}}</option>
                                                 @endforeach
@@ -58,9 +58,9 @@
                                         </div>
                                         <div class="form-group mx-sm-3 mb-2">
                                             <label class="sr-only">Quantity</label>
-                                            <input type="number" name="quantity" class="form-control" placeholder="Quantity" required>
+                                            <input type="number" name="quantity" class="form-control" placeholder="Kuantitas" required>
                                         </div>
-                                        <button type="submit" class="btn btn-primary btn-rounded mb-2">Add Item</button>
+                                        <button type="submit" class="btn btn-primary btn-rounded mb-2">Tambah Pesanan</button>
                                 </form>
                             </div>
                             </br>
@@ -70,12 +70,12 @@
                                         <thead class="thead-primary">
                                             <tr>
                                                 <th width="5%">No.</th>
-                                                <th scope="col">Menu Image</th>
-                                                <th scope="col">Menu Name</th>
-                                                <th scope="col">Quantity</th>
-                                                <th scope="col">Price</th>
-                                                <th scope="col">Subtotal Price</th>
-                                                <th scope="col">Action</th>
+                                                <th scope="col">Gambar Menu</th>
+                                                <th scope="col">Nama Menu</th>
+                                                <th scope="col">Kuantitas</th>
+                                                <th scope="col">Harga</th>
+                                                <th scope="col">Jumlah Harga</th>
+                                                <th scope="col">Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
