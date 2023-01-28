@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\SalesTransactionController;
 use App\Http\Controllers\ExportController;
+use App\Http\Controllers\TransactionCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,6 +56,7 @@ Route::group(['middleware' => ['auth']], function () {
         })->name('index');
 
         Route::resource('/admins', AdminController::class);
+        Route::resource('/transaction-categories', TransactionCategoryController::class);
     });
 });
 
@@ -71,5 +73,6 @@ Route::group(['as' => 'ajax.', 'prefix' => 'ajax'], function () {
     Route::get('/menus', [MenuController::class, 'getMenus'])->name('menus');
     Route::get('/sales-transactions', [SalesTransactionController::class, 'getSalesTransactions'])->name('sales-transactions');
     Route::get('/admins', [AdminController::class, 'getAdmins'])->name('admins');
+    Route::get('/transaction-categories', [TransactionCategoryController::class, 'getTransactionCategories'])->name('transaction-categories');
 });
 

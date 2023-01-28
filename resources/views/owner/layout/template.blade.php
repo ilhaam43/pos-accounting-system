@@ -120,9 +120,9 @@
                         </ul>
                     </li>
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                        <i class="icon icon-wallet-90"></i><span class="nav-text">Transaksi Penjualan</span></a>
+                        <i class="icon icon-wallet-90"></i><span class="nav-text">Kategori Transaksi</span></a>
                         <ul aria-expanded="false">
-                            <li><a href="#">List Penjualan</a></li>
+                            <li><a href="{{ route('owner.transaction-categories.index') }}">List Kategori Transaksi</a></li>
                         </ul>
                     </li>
                     
