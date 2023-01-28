@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\SalesTransactionController;
 use App\Http\Controllers\ExportController;
@@ -45,6 +46,19 @@ Route::group(['middleware' => ['auth']], function () {
     });
 });
 
+// This is owner route access
+Route::group(['middleware' => ['auth']], function () {
+    Route::group(['as' => 'owner.', 'prefix' => 'owner', 'middleware' => ['checkLogin:owner']], function () {
+        
+        Route::get('/', function () {
+            return view('owner/index');
+        })->name('index');
+
+        Route::resource('/admins', AdminController::class);
+    });
+});
+
+
 //This is export data route
 Route::group(['as' => 'export.', 'prefix' => 'export', 'middleware' => ['checkLogin:admin']], function () {
     Route::group(['as' => 'pdf.', 'prefix' => 'pdf'], function () {
@@ -53,8 +67,9 @@ Route::group(['as' => 'export.', 'prefix' => 'export', 'middleware' => ['checkLo
 });
 
 //This is ajax data route
-Route::group(['as' => 'ajax.', 'prefix' => 'ajax', 'middleware' => ['checkLogin:admin']], function () {
+Route::group(['as' => 'ajax.', 'prefix' => 'ajax'], function () {
     Route::get('/menus', [MenuController::class, 'getMenus'])->name('menus');
     Route::get('/sales-transactions', [SalesTransactionController::class, 'getSalesTransactions'])->name('sales-transactions');
+    Route::get('/admins', [AdminController::class, 'getAdmins'])->name('admins');
 });
 
