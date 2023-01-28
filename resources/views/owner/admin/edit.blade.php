@@ -1,4 +1,4 @@
-@extends('owner.admin.layout.template')
+@extends('owner.layout.template')
 @section('content')
         <!--**********************************
             Content body start
@@ -8,13 +8,13 @@
                 <div class="row page-titles mx-0">
                     <div class="col-sm-6 p-md-0">
                         <div class="welcome-text">
-                            <h4>Edit Menu Data</h4>
+                            <h4>Edit Admin Data</h4>
                             <span class="ml-1"></span>
                         </div>
                     </div>
                     <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="javascript:void(0)">Edit Menu Data</a></li>
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">Edit Admin Data</a></li>
                         </ol>
                     </div>
                     </div>
@@ -40,33 +40,32 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">Edit Menu Data</h4>
+                                <h4 class="card-title">Edit Admin Data</h4>
                             </div>
                             <div class="card-body">
                             <div class="basic-form">
-                                    <form method="POST" action="{{ route('admin.menus.update', $menu->id )}}" enctype="multipart/form-data">
+                                    <form method="POST" action="{{ route('owner.admins.update', $admin->id )}}" enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
-                                                <label>Menu Name</label>
-                                                <input type="text" class="form-control" value="{{$menu->name}}" name="name">
+                                                <label>Admin Name :</label>
+                                                <input type="text" class="form-control" value="{{$admin->name}}" name="name">
                                             </div>
                                             <div class="form-group col-md-6">
-                                                <label>Menu Price</label>
-                                                <input type="number" class="form-control" value="{{$menu->price}}"name="price">
+                                                <label>Admin Email :</label>
+                                                <input type="text" class="form-control" value="{{$admin->email}}"name="email">
                                             </div>
-                                            <div class="form-group col-md-12">
-                                                <label>Menu Image</label>
-                                                <div class="form-group">
-                                                    <div class="custom-file">
-                                                        <input type="file" class="custom-file-input" name="menu_image">
-                                                            <label class="custom-file-label">Pilih Gambar</label>
-                                                        </div>
-                                                    </div>
+                                            <div class="form-group col-md-6">
+                                                <label>Password :</label>
+                                                <input type="text" class="form-control" name="password">
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label>Konfirmasi Password :</label>
+                                                <input type="text" class="form-control" name="konfirmasi_password">
                                             </div>
                                         </div>
-                                        <a href="{{route('admin.menus.index')}}" class="btn btn-danger">Batal</a>
+                                        <a href="{{route('owner.admins.index')}}" class="btn btn-danger">Batal</a>
                                         <button type="submit" class="btn btn-primary">Simpan</button>
                                     </form>
                                 </div>

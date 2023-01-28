@@ -50,7 +50,6 @@ class SalesTransactionController extends Controller
         try{    
             $store = $this->service->store($request);
         }catch(\Throwable $th){
-            return $th;
             return redirect()->route('admin.sales-transactions.index')->with('error', 'Transaksi penjualan gagal dibuat.');
         }
         return redirect()->route('admin.sales-transactions.index')->with('success', 'Transaksi penjualan berhasil dibuat.');

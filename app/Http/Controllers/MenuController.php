@@ -36,7 +36,6 @@ class MenuController extends Controller
         try{    
             $store = $this->service->storeMenu($request);
         }catch(\Throwable $th){
-            return $th;
             return redirect()->route('admin.menus.index')->with('error', 'Data menu gagal dibuat.');
         }
         return redirect()->route('admin.menus.index')->with('success', 'Data menu berhasil dibuat.');
@@ -47,7 +46,6 @@ class MenuController extends Controller
         try{    
             $update = $this->service->updateMenu($request, $id);
         }catch(\Throwable $th){
-            return $th;
             return redirect()->route('admin.menus.index')->with('error', 'Data menu gagal diubah.');
         }
         return redirect()->route('admin.menus.index')->with('success', 'Data menu berhasil diubah.');

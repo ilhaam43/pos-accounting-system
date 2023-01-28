@@ -1,7 +1,7 @@
 <script>
 function deleteConfirmation(id) {
     swal({
-        title: "Delete menu data",
+        title: "Delete admin data",
         text: "Are you sure to delete this data?",
         type: "warning",
         showCancelButton: !0,
@@ -20,7 +20,7 @@ function deleteConfirmation(id) {
                     if (results.success === true) {
                         swal("Done!", results.message, "success");
                         window.setTimeout(function(){ 
-                            window.location.replace('/admin/menus');
+                            window.location.replace('/owner/admins');
                         }, 2000);
                     } else {
                         swal("Error!", results.message, "error");

@@ -61,11 +61,11 @@
                                                     </div>
                                                     <h6> Password : </h6>
                                                     <div class="form-group">
-                                                        <input class="form-control" type="text" name="password" required>
+                                                        <input class="form-control" type="password" name="password" required>
                                                     </div>
                                                     <h6> Konfirmasi Password : </h6>
                                                     <div class="form-group">
-                                                        <input class="form-control" type="text" name="confirm_password" required>
+                                                        <input class="form-control" type="password" name="confirm_password" required>
                                                     </div>
                                                     <h6> Email : </h6>
                                                     <div class="form-group">
