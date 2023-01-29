@@ -14,4 +14,13 @@ class TransactionCategory extends Model
     protected $guarded = [
         'id'
     ];
+
+    public function income(){
+        return $this->belongsTo(Income::class);
+    }
+
+    public function expense()
+    {
+        return $this->belongsTo(Expense::class);
+    }
 }
