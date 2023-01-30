@@ -8,6 +8,7 @@ use App\Http\Controllers\SalesTransactionController;
 use App\Http\Controllers\ExportController;
 use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\ExpenseController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\TransactionCategoryController;
 
 /*
@@ -56,6 +57,10 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/', function () {
             return view('owner/index');
         })->name('index');
+
+        Route::group(['as' => 'report.', 'prefix' => 'report'], function () {
+            Route::get('/sales-transactions', [ReportController::class, 'salesTransactionIndex'])->name('sales-transactions.index');
+        });
 
         Route::resource('/admins', AdminController::class);
         Route::resource('/incomes', IncomeController::class);

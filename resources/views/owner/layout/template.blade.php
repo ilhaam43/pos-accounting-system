@@ -132,6 +132,12 @@
                             <li><a href="{{ route('owner.expenses.index') }}">Transaksi Pengeluaran</a></li>
                         </ul>
                     </li>
+                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                        <i class="icon icon-single-04"></i><span class="nav-text">Kelola Laporan</span></a>
+                        <ul aria-expanded="false">
+                            <li><a href="{{ route('owner.report.sales-transactions.index') }}">Laporan Transaksi Penjualan</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
 
