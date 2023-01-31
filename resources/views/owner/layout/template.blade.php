@@ -108,7 +108,7 @@
                 <ul class="metismenu" id="menu">
                     <li class="nav-label first">Main Menu</li>
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-                                class="icon icon-single-04"></i><span class="nav-text">Dashboard</span></a>
+                                class="icon icon-home"></i><span class="nav-text">Dashboard</span></a>
                         <ul aria-expanded="false">
                             <li><a href="./index.html">Dashboard</a></li>
                         </ul>
@@ -120,20 +120,20 @@
                         </ul>
                     </li>
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                        <i class="icon icon-wallet-90"></i><span class="nav-text">Kategori Transaksi</span></a>
+                        <i class="icon icon-folder-15"></i><span class="nav-text">Kategori Transaksi</span></a>
                         <ul aria-expanded="false">
                             <li><a href="{{ route('owner.transaction-categories.index') }}">List Kategori Transaksi</a></li>
                         </ul>
                     </li>
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                        <i class="icon icon-single-04"></i><span class="nav-text">Kelola Transaksi</span></a>
+                        <i class="icon icon-wallet-90"></i><span class="nav-text">Kelola Transaksi</span></a>
                         <ul aria-expanded="false">
                             <li><a href="{{ route('owner.incomes.index') }}">Transaksi Pemasukan</a></li>
                             <li><a href="{{ route('owner.expenses.index') }}">Transaksi Pengeluaran</a></li>
                         </ul>
                     </li>
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                        <i class="icon icon-single-04"></i><span class="nav-text">Kelola Laporan</span></a>
+                        <i class="icon icon-funnel-40"></i><span class="nav-text">Kelola Laporan</span></a>
                         <ul aria-expanded="false">
                             <li><a href="{{ route('owner.report.sales-transactions.index') }}">Laporan Transaksi Penjualan</a></li>
                         </ul>
