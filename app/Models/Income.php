@@ -18,4 +18,9 @@ class Income extends Model
     public function transactionCategory(){
         return $this->hasOne(TransactionCategory::class, 'id', 'category_id');
     }
+
+    public function getCreatedAtAttribute()
+    {
+        return date('d-m-Y', strtotime($this->attributes['created_at']));
+    }
 }

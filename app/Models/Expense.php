@@ -18,4 +18,9 @@ class Expense extends Model
     public function TransactionCategory(){
         return $this->hasOne(TransactionCategory::class, 'id', 'category_id');
     }
+
+    public function getCreatedAtAttribute()
+    {
+        return date('d-m-Y', strtotime($this->attributes['created_at']));
+    }
 }

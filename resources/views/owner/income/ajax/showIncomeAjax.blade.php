@@ -18,6 +18,7 @@
                 { data: 'transaction_category.category', name: 'TransactionCategory.category'},
                 { data: 'description', name: 'description'},
                 { data: 'value', name: 'value'},
+                { data: 'created_at', name: 'created_at'},
 
                 {
                     data: 'action', 

@@ -54,7 +54,7 @@ class IncomeController extends Controller
                 ->addIndexColumn()
                 ->addColumn('action', function($row){
                     $routeDelete = route('owner.incomes.destroy', $row->id) ?? '';
-                    $btn = '<button class="btn btn-danger btn-sm" data-id="'.$row->id.'" data-action="'.$routeDelete.'" onclick="deleteConfirmation('.$row->id.')">Hapus</button>';
+                    $btn = '<button class="btn btn-danger btn-sm btn-rounded" data-id="'.$row->id.'" data-action="'.$routeDelete.'" onclick="deleteConfirmation('.$row->id.')">Hapus</button>';
                     return $btn;
                 })
                 ->rawColumns(['action'])

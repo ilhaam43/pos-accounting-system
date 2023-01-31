@@ -91,6 +91,7 @@
                                                 <th>Kategori</th>
                                                 <th>Deskripsi</th>
                                                 <th>Nominal</th>
+                                                <th>Tanggal</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
