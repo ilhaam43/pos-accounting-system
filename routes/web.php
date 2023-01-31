@@ -71,9 +71,10 @@ Route::group(['middleware' => ['auth']], function () {
 
 
 //This is export data route
-Route::group(['as' => 'export.', 'prefix' => 'export', 'middleware' => ['checkLogin:admin']], function () {
+Route::group(['as' => 'export.', 'prefix' => 'export'], function () {
     Route::group(['as' => 'pdf.', 'prefix' => 'pdf'], function () {
         Route::get('/receipt/{id}', [ExportController::class, 'generateReceipt'])->name('receipt');
+        Route::get('/sales-transactions/{month}', [ExportController::class, 'generateSalesTransactionReport'])->name('sales-transactions');
     });
 });
 

@@ -30,7 +30,6 @@ class ExpenseController extends Controller
         try{    
             $store = $this->service->storeExpense($request);
         }catch(\Throwable $th){
-            return $th;
             return redirect()->route('owner.expenses.index')->with('error', 'Tambah transaksi pengeluaran gagal dibuat.');
         }
         return redirect()->route('owner.expenses.index')->with('success', 'Tambah transaksi pengeluaran berhasil dibuat.');
