@@ -75,9 +75,8 @@
         <img src="images/logo warungnya eyang.jpeg" width="70" height="80" style="margin: auto 5px;
     float: left;" alt="Logo">
             <h1></h1>
-            <h1>Warungnya Eyang</h1><br>
-            <p align="left">Alamat : Jl. Teratai, Srengseng Sawah, Kec. Jagakarsa, Kota Jakarta Selatan</p>
-            <p align="left">No HP : 082213686190</p><br>
+            <h1>Warungnya Eyang</h1>
+            <h3>Bukti Pembayaran Transaksi</h3>
             <p align="left">Kode Transaksi : {{ $salesTransaction->transaction_code }}</p>
             <p align="left">Tanggal : {{ $salesTransaction->created_at }}</p>
         </div>
