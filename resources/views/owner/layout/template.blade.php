@@ -136,6 +136,7 @@
                         <i class="icon icon-funnel-40"></i><span class="nav-text">Kelola Laporan</span></a>
                         <ul aria-expanded="false">
                             <li><a href="{{ route('owner.report.sales-transactions.index') }}">Laporan Transaksi Penjualan</a></li>
+                            <li><a href="{{ route('owner.report.income-statements.index') }}">Laporan Laba Rugi</a></li>
                         </ul>
                     </li>
                 </ul>

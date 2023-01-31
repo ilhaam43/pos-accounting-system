@@ -12,4 +12,9 @@ class ReportController extends Controller
     {
         return view('owner/report/sales-transaction/index');
     }
+
+    public function incomeStatementIndex()
+    {
+        return view('owner/report/income-statement/index');
+    }
 }

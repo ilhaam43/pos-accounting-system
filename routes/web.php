@@ -60,6 +60,7 @@ Route::group(['middleware' => ['auth']], function () {
 
         Route::group(['as' => 'report.', 'prefix' => 'report'], function () {
             Route::get('/sales-transactions', [ReportController::class, 'salesTransactionIndex'])->name('sales-transactions.index');
+            Route::get('/income-statements', [ReportController::class, 'incomeStatementIndex'])->name('income-statements.index');
         });
 
         Route::resource('/admins', AdminController::class);
@@ -75,6 +76,7 @@ Route::group(['as' => 'export.', 'prefix' => 'export'], function () {
     Route::group(['as' => 'pdf.', 'prefix' => 'pdf'], function () {
         Route::get('/receipt/{id}', [ExportController::class, 'generateReceipt'])->name('receipt');
         Route::get('/sales-transactions/{month}', [ExportController::class, 'generateSalesTransactionReport'])->name('sales-transactions');
+        Route::get('/income-statements/{month}', [ExportController::class, 'generateIncomeStatement'])->name('income-statements');
     });
 });
 
