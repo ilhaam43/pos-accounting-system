@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Receipt</title>
+    <title>Laporan Transaksi Penjualan</title>
     <style>
         /* CSS styles for receipt layout */
         /* You can add your own styles here */
@@ -13,7 +13,7 @@
         .receipt {
             width: 700px;
             margin: 0 auto;
-            border: 1px solid #ccc;
+            border: 0px solid #ccc;
             padding: 10px;
         }
 
@@ -72,9 +72,9 @@
 <body>
     <div class="receipt">
         <div class="receipt-header">
-            <h1></h1>
-            <h1>Laporan Transaksi Penjualan</h1><br>
-            <p align="left">Periode : {{ $periode }}</p>
+            <h1>Warungnya Eyang</h1>
+            <h3>Laporan Transaksi Penjualan</h3>
+            <h3>Periode {{ $periode }}</h3>
         </div>
         <div class="receipt-body">
             <table>
@@ -89,7 +89,7 @@
                 <tbody>
                         @foreach($salesTransaction as $index => $menus)
                         <tr>
-                            <td>{{ $index + 1 }}</td>
+                            <td>{{ $index + 1 }}.</td>
                             <td>{{ $menus->menu_name }}</td>
                             <td>{{ $menus->quantitys }}</td>
                             <td>Rp. {{ number_format($menus->total_prices, 2, ",", ".") }}</td>
@@ -97,10 +97,10 @@
                         @endforeach
                 </tbody>
                 <tfoot>
-                    <tr>
+                    <tr style="background-color:yellow;">
                         <td colspan="2"><b>Total :</b></td>
-                        <td>{{ $sumTotalQuantity }}</td>
-                        <td>Rp. {{ number_format($sumTotalPrices, 2, ",", ".") }}</td>
+                        <td><b>{{ $sumTotalQuantity }}</b></td>
+                        <td><b>Rp. {{ number_format($sumTotalPrices, 2, ",", ".") }}</b></td>
                     </tr>
                 </tfoot>
             </table>
