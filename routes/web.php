@@ -9,6 +9,7 @@ use App\Http\Controllers\ExportController;
 use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\CashBalanceController;
 use App\Http\Controllers\TransactionCategoryController;
 
 /*
@@ -61,11 +62,13 @@ Route::group(['middleware' => ['auth']], function () {
         Route::group(['as' => 'report.', 'prefix' => 'report'], function () {
             Route::get('/sales-transactions', [ReportController::class, 'salesTransactionIndex'])->name('sales-transactions.index');
             Route::get('/income-statements', [ReportController::class, 'incomeStatementIndex'])->name('income-statements.index');
+            Route::get('/cashflows', [ReportController::class, 'cashFlowIndex'])->name('cashflows.index');
         });
-
+        
         Route::resource('/admins', AdminController::class);
         Route::resource('/incomes', IncomeController::class);
         Route::resource('/expenses', ExpenseController::class);
+        Route::resource('/cash-balances', CashBalanceController::class);
         Route::resource('/transaction-categories', TransactionCategoryController::class);
     });
 });
@@ -77,6 +80,7 @@ Route::group(['as' => 'export.', 'prefix' => 'export'], function () {
         Route::get('/receipt/{id}', [ExportController::class, 'generateReceipt'])->name('receipt');
         Route::get('/sales-transactions/{month}', [ExportController::class, 'generateSalesTransactionReport'])->name('sales-transactions');
         Route::get('/income-statements/{month}', [ExportController::class, 'generateIncomeStatement'])->name('income-statements');
+        Route::get('/cashflows/{month}', [ExportController::class, 'generateCashflow'])->name('cashflows');
     });
 });
 
@@ -88,5 +92,6 @@ Route::group(['as' => 'ajax.', 'prefix' => 'ajax'], function () {
     Route::get('/transaction-categories', [TransactionCategoryController::class, 'getTransactionCategories'])->name('transaction-categories');
     Route::get('/incomes', [IncomeController::class, 'getIncomes'])->name('incomes');
     Route::get('/expenses', [ExpenseController::class, 'getExpenses'])->name('expenses');
+    Route::get('/cash-balances', [CashBalanceController::class, 'getCashBalance'])->name('cash-balances');
 });
 

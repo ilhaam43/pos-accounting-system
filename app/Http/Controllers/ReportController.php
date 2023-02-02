@@ -17,4 +17,9 @@ class ReportController extends Controller
     {
         return view('owner/report/income-statement/index');
     }
+
+    public function cashflowIndex()
+    {
+        return view('owner/report/cashflow/index');
+    }
 }

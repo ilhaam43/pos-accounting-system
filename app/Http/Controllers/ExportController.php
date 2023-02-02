@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\Income;
 use App\Models\Expense;
+use App\Models\CashBalance;
 use App\Models\SalesTransaction;
 use App\Models\SalesTransactionDetail;
 use Mpdf\Mpdf;
@@ -60,5 +61,26 @@ class ExportController extends Controller
         $mpdf = new Mpdf();
         $mpdf->WriteHTML(view('pdf/income-statement', compact('salesTransaction', 'periode', 'sumTotalPrices', 'incomes', 'expenses', 'sumIncomes', 'sumExpenses'))->render());
         $mpdf->Output('pdf.income-statement', 'I');
+    }
+
+    public function generateCashflow($date)
+    {
+        $english_months = array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+        $indonesian_months = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember");
+        $dates = explode('-', $date);
+        $periode = date("F Y", strtotime($date));
+        $periode = str_replace($english_months, $indonesian_months, $periode);
+
+        $salesTransaction = SalesTransaction::whereMonth('created_at', $dates[1])->whereYear('created_at', $dates[0])->get();
+        $incomes = Income::whereMonth('created_at', $dates[1])->whereYear('created_at', $dates[0])->with('transactionCategory')->get();
+        $expenses = Expense::whereMonth('created_at', $dates[1])->whereYear('created_at', $dates[0])->with('transactionCategory')->get();
+        $cashBalance = CashBalance::whereMonth('created_at', $dates[1])->whereYear('created_at', $dates[0])->get();
+        $sumTotalPrices = $salesTransaction->sum('transaction_total_price');
+        $sumIncomes = $incomes->sum('value');
+        $sumExpenses = $expenses->sum('value');
+
+        $mpdf = new Mpdf();
+        $mpdf->WriteHTML(view('pdf/cashflow', compact('salesTransaction', 'periode', 'sumTotalPrices', 'incomes', 'expenses', 'sumIncomes', 'sumExpenses'))->render());
+        $mpdf->Output('pdf.cashflow', 'I');
     }
 }
