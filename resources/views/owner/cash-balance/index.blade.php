@@ -42,7 +42,9 @@
                             <div class="card-header">
                                 <h4 class="card-title">Saldo Kas</h4>
                                 <!-- Button trigger modal -->
+                                @if($cashBalance == 0)
                                 <button type="button" class="btn btn-primary btn-rounded" data-toggle="modal" data-target="#basicModal">Tambah Saldo Kas</button>
+                                @endif
                                     <!-- Modal -->
                                     <div class="modal fade" id="basicModal">
                                         <div class="modal-dialog" role="document">
@@ -78,6 +80,7 @@
                                                 <th>Saldo Awal</th>
                                                 <th>Saldo Akhir</th>
                                                 <th>Perubahan Saldo</th>
+                                                <th>Periode</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>

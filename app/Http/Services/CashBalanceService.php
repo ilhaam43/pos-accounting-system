@@ -22,6 +22,17 @@ class CashBalanceService
         return $storeCashBalance;
     }
 
+    public function updateCashBalance($request, $id)
+    {   
+        $updateCashBalance = CashBalance::find($id)->update([
+            'initial_cash' => $request['initial_cash'],
+            'ending_cash'  => $request['ending_cash'],
+            'change'       => $request['change']
+        ]);
+        
+        return $updateCashBalance;
+    }
+
     public function destroyCashBalance($id)
     {   
         //logic to delete cash balance data by id

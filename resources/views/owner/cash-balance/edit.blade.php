@@ -40,32 +40,28 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">Edit Admin Data</h4>
+                                <h4 class="card-title">Edit Saldo Kas</h4>
                             </div>
                             <div class="card-body">
                             <div class="basic-form">
-                                    <form method="POST" action="{{ route('owner.admins.update', $admin->id )}}" enctype="multipart/form-data">
+                                    <form method="POST" action="{{ route('owner.cash-balances.update', $cashBalance->id )}}" enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
                                         <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                                <label>Admin Name :</label>
-                                                <input type="text" class="form-control" value="{{$admin->name}}" name="name">
+                                            <div class="form-group col-md-4">
+                                                <label>Saldo Awal :</label>
+                                                <input type="text" class="form-control" value="{{$cashBalance->initial_cash}}" name="initial_cash">
                                             </div>
-                                            <div class="form-group col-md-6">
-                                                <label>Admin Email :</label>
-                                                <input type="text" class="form-control" value="{{$admin->email}}"name="email">
+                                            <div class="form-group col-md-4">
+                                                <label>Perubahan Saldo :</label>
+                                                <input type="text" class="form-control" value="{{$cashBalance->change}}" name="change">
                                             </div>
-                                            <div class="form-group col-md-6">
-                                                <label>Password :</label>
-                                                <input type="text" class="form-control" name="password">
-                                            </div>
-                                            <div class="form-group col-md-6">
-                                                <label>Konfirmasi Password :</label>
-                                                <input type="text" class="form-control" name="konfirmasi_password">
+                                            <div class="form-group col-md-4">
+                                                <label>Saldo Akhir :</label>
+                                                <input type="text" class="form-control" value="{{$cashBalance->ending_cash}}"name="ending_cash">
                                             </div>
                                         </div>
-                                        <a href="{{route('owner.admins.index')}}" class="btn btn-danger">Batal</a>
+                                        <a href="{{route('owner.cash-balances.index')}}" class="btn btn-danger">Batal</a>
                                         <button type="submit" class="btn btn-primary">Simpan</button>
                                     </form>
                                 </div>

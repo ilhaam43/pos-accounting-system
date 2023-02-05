@@ -17,6 +17,6 @@ class CashBalance extends Model
 
     public function getCreatedAtAttribute()
     {
-        return date('d-m-Y', strtotime($this->attributes['created_at']));
+        return date('F Y', strtotime($this->attributes['created_at']));
     }
 }

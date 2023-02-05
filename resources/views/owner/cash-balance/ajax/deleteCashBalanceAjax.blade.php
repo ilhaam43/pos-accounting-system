@@ -1,7 +1,7 @@
 <script>
 function deleteConfirmation(id) {
     swal({
-        title: "Delete admin data",
+        title: "Delete data saldo kas",
         text: "Are you sure to delete this data?",
         type: "warning",
         showCancelButton: !0,
@@ -20,7 +20,7 @@ function deleteConfirmation(id) {
                     if (results.success === true) {
                         swal("Done!", results.message, "success");
                         window.setTimeout(function(){ 
-                            window.location.replace('/owner/admins');
+                            window.location.replace('/owner/cash-balances');
                         }, 2000);
                     } else {
                         swal("Error!", results.message, "error");

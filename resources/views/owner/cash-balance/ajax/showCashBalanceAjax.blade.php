@@ -18,6 +18,7 @@
                 { data: 'initial_cash', name: 'initial_cash'},
                 { data: 'ending_cash', name: 'ending_cash'},
                 { data: 'change', name: 'change'},
+                { data: 'created_at', name: 'created_at'},
                 
 
                 {

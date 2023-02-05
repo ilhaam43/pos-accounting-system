@@ -20,7 +20,25 @@ class CashBalanceController extends Controller
 
     public function index()
     {
-        return view('owner/cash-balance/index');
+        $cashBalance = CashBalance::count();
+        return view('owner/cash-balance/index', compact('cashBalance'));
+    }
+
+    public function edit($id)
+    {
+        $cashBalance = CashBalance::where('id', $id)->first();
+        return view('owner/cash-balance/edit', compact('cashBalance'));
+    }
+
+    public function update($id, Request $request)
+    {
+        try{    
+            $update = $this->service->updateCashBalance($request, $id);
+        }catch(\Throwable $th){
+            return $th;
+            return redirect()->route('owner.cash-balances.edit')->with('error', 'Ubah saldo kas gagal.');
+        }
+        return redirect()->route('owner.cash-balances.index')->with('success', 'Ubah saldo kas berhasil.');
     }
 
     public function store(Request $request)
