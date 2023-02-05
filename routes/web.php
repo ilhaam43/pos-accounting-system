@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\SalesTransactionController;
 use App\Http\Controllers\ExportController;
@@ -65,7 +65,7 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('/cashflows', [ReportController::class, 'cashFlowIndex'])->name('cashflows.index');
         });
         
-        Route::resource('/admins', AdminController::class);
+        Route::resource('/users', UserController::class);
         Route::resource('/incomes', IncomeController::class);
         Route::resource('/expenses', ExpenseController::class);
         Route::resource('/cash-balances', CashBalanceController::class);
@@ -88,7 +88,7 @@ Route::group(['as' => 'export.', 'prefix' => 'export'], function () {
 Route::group(['as' => 'ajax.', 'prefix' => 'ajax'], function () {
     Route::get('/menus', [MenuController::class, 'getMenus'])->name('menus');
     Route::get('/sales-transactions', [SalesTransactionController::class, 'getSalesTransactions'])->name('sales-transactions');
-    Route::get('/admins', [AdminController::class, 'getAdmins'])->name('admins');
+    Route::get('/users', [UserController::class, 'getUsers'])->name('users');
     Route::get('/transaction-categories', [TransactionCategoryController::class, 'getTransactionCategories'])->name('transaction-categories');
     Route::get('/incomes', [IncomeController::class, 'getIncomes'])->name('incomes');
     Route::get('/expenses', [ExpenseController::class, 'getExpenses'])->name('expenses');

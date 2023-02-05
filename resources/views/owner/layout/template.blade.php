@@ -114,9 +114,9 @@
                         </ul>
                     </li>
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                        <i class="icon icon-single-04"></i><span class="nav-text">Kelola Admin</span></a>
+                        <i class="icon icon-single-04"></i><span class="nav-text">Kelola Pengguna</span></a>
                         <ul aria-expanded="false">
-                            <li><a href="{{ route('owner.admins.index') }}">List Admin</a></li>
+                            <li><a href="{{ route('owner.users.index') }}">List Pengguna</a></li>
                         </ul>
                     </li>
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
