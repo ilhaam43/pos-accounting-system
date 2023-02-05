@@ -100,7 +100,7 @@
                         <tr>
                             <td>{{ $income->transactionCategory->category }}</td>
                             <td></td>
-                            <td><center>Rp. {{ number_format($income->value, 2, ",", ".") }}</center></td>
+                            <td><center>Rp. {{ number_format($income->total, 2, ",", ".") }}</center></td>
                         </tr>
                         @endforeach
                         <tr style="background-color:lime;">
@@ -116,7 +116,7 @@
                         @foreach($expenses as $index => $expense)
                         <tr>
                             <td>Pengeluaran {{ $expense->transactionCategory->category }}</td>
-                            <td><center>Rp. {{ number_format($expense->value, 2, ",", ".") }}</center></td>
+                            <td><center>Rp. {{ number_format($expense->total, 2, ",", ".") }}</center></td>
                             <td></td>
                         </tr>
                         @endforeach
