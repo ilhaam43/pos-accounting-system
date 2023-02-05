@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\SalesTransactionController;
@@ -36,11 +37,9 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 // This is admin route access
 Route::group(['middleware' => ['auth']], function () {
     Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['checkLogin:admin']], function () {
-        
-        Route::get('/', function () {
-            return view('admin/index');
-        })->name('index');
-        
+
+        Route::get('/', [AdminController::class, 'index'])->name('index');
+
         Route::resource('/menus', MenuController::class);
         Route::resource('/sales-transactions', SalesTransactionController::class);
         
