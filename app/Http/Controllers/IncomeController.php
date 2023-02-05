@@ -21,7 +21,7 @@ class IncomeController extends Controller
 
     public function index()
     {   
-        $transactionCategory = TransactionCategory::where('type', "income")->get();
+        $transactionCategory = TransactionCategory::where('type', "Pemasukan")->get();
         return view('owner/income/index', compact('transactionCategory'));
     }
 

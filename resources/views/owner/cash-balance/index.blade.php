@@ -59,14 +59,6 @@
                                                     <div class="form-group">
                                                         <input class="form-control" type="text" name="initial_cash" required>
                                                     </div>
-                                                    <h6> Perubahan Saldo : </h6>
-                                                    <div class="form-group">
-                                                        <input class="form-control" type="text" name="change" required>
-                                                    </div>
-                                                    <h6> Saldo Kas Akhir : </h6>
-                                                    <div class="form-group">
-                                                        <input class="form-control" type="text" name="ending_cash" required>
-                                                    </div>
                                             </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>

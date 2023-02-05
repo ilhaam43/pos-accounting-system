@@ -15,8 +15,9 @@ return new class extends Migration
     {
         Schema::create('transaction_categories', function (Blueprint $table) {
             $table->id();
+            $table->string('account_code');
             $table->string('category');
-            $table->enum('type', ['income', 'expenses']);
+            $table->enum('type', ['Pemasukan', 'Pengeluaran']);
             $table->timestamps();
         });
     }

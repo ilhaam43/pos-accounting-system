@@ -21,7 +21,7 @@ class ExpenseController extends Controller
 
     public function index()
     {   
-        $transactionCategory = TransactionCategory::where('type', "expenses")->get();
+        $transactionCategory = TransactionCategory::where('type', "Pengeluaran")->get();
         return view('owner/expense/index', compact('transactionCategory'));
     }
 

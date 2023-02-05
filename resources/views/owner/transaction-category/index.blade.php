@@ -62,8 +62,8 @@
                                                     <h6> Tipe : </h6>
                                                     <select type="text" class="form-control" name="type" required>
                                                     <option selected>Pilih Tipe...</option>
-                                                            <option value="income">Pemasukan</option>
-                                                            <option value="expenses">Pengeluaran</option>
+                                                            <option value="Pemasukan">Pemasukan</option>
+                                                            <option value="Pengeluaran">Pengeluaran</option>
                                                     </select>
                                             </div>
                                                 <div class="modal-footer">
