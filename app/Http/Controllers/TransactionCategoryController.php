@@ -47,7 +47,7 @@ class TransactionCategoryController extends Controller
     public function getTransactionCategories(Request $request)
     {
         if ($request->ajax()) {
-            $data = TransactionCategory::groupBy('type')->get();
+            $data = TransactionCategory::all();
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($row){
