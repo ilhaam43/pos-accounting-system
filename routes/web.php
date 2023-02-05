@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\OwnerController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\SalesTransactionController;
@@ -54,9 +55,7 @@ Route::group(['middleware' => ['auth']], function () {
 Route::group(['middleware' => ['auth']], function () {
     Route::group(['as' => 'owner.', 'prefix' => 'owner', 'middleware' => ['checkLogin:owner']], function () {
         
-        Route::get('/', function () {
-            return view('owner/index');
-        })->name('index');
+        Route::get('/', [OwnerController::class, 'index'])->name('index');
 
         Route::group(['as' => 'report.', 'prefix' => 'report'], function () {
             Route::get('/sales-transactions', [ReportController::class, 'salesTransactionIndex'])->name('sales-transactions.index');
