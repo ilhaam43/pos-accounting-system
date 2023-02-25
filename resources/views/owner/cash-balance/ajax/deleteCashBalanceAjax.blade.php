@@ -1,8 +1,8 @@
 <script>
 function deleteConfirmation(id) {
     swal({
-        title: "Delete data saldo kas",
-        text: "Are you sure to delete this data?",
+        title: "Hapus data saldo kas",
+        text: "Apakah kamu yakin ingin menghapus data ini?",
         type: "warning",
         showCancelButton: !0,
         confirmButtonText: "Delete",
@@ -18,12 +18,12 @@ function deleteConfirmation(id) {
                 dataType: 'JSON',
                 success: function (results) {
                     if (results.success === true) {
-                        swal("Done!", results.message, "success");
+                        swal("Berhasil!", results.message, "success");
                         window.setTimeout(function(){ 
                             window.location.replace('/owner/cash-balances');
                         }, 2000);
                     } else {
-                        swal("Error!", results.message, "error");
+                        swal("Gagal!", results.message, "error");
                     }
                 }
             });

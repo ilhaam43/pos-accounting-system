@@ -40,7 +40,7 @@
                     <div class="col-6">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">Generate Laporan Arus Kas</h4>
+                                <h4 class="card-title">Periode Laporan Arus Kas</h4>
                             </div>
                             <div class="card-body">
                             <div class="basic-form">
@@ -52,7 +52,7 @@
                                     <input type="month" class="form-control" min="2023-01" max="2025-01" name="month" id="month">
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary" onclick="generateReport(document.getElementById('month').value)">Generate</button>
+                            <button type="submit" class="btn btn-primary" onclick="generateReport(document.getElementById('month').value)">Tampilkan Laporan</button>
                         </form>
                                 </div>
                             </div>

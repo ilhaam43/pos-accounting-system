@@ -134,7 +134,7 @@
                                             <h5> Rp. {{ number_format($totalPrice, 2, ",", ".") ?? 0 }} </h5>
                                         </div>
                                         <div class="col-lg-12">
-                                            <button type="submit" class="btn btn-primary btn-rounded">Submit Order</button>
+                                            <button type="submit" class="btn btn-primary btn-rounded">Tambah Pesanan</button>
                                         </div>
                                     </div>
                                     </br>

@@ -1,12 +1,12 @@
 <script>
 function deleteConfirmation(id) {
     swal({
-        title: "Delete income data",
-        text: "Are you sure to delete this data?",
+        title: "Hapus data pemasukan",
+        text: "Apakah kamu yakin ingin menghapus data ini?",
         type: "warning",
         showCancelButton: !0,
-        confirmButtonText: "Delete",
-        cancelButtonText: "Cancel",
+        confirmButtonText: "Hapus",
+        cancelButtonText: "Batal",
         reverseButtons: !0
     }).then(function (e) {
         if (e.value === true) {
@@ -18,12 +18,12 @@ function deleteConfirmation(id) {
                 dataType: 'JSON',
                 success: function (results) {
                     if (results.success === true) {
-                        swal("Done!", results.message, "success");
+                        swal("Berhasil!", results.message, "success");
                         window.setTimeout(function(){ 
                             window.location.replace('/owner/incomes');
                         }, 2000);
                     } else {
-                        swal("Error!", results.message, "error");
+                        swal("Gagal!", results.message, "error");
                     }
                 }
             });
