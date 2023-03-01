@@ -83,7 +83,6 @@ class ExportController extends Controller
         $expenses = Expense::whereMonth('created_at', $dates[1])->whereYear('created_at', $dates[0])->with('transactionCategory')->selectRaw('sum(value) as total, category_id')
         ->groupBy('category_id')->get();
 
-        $cashBalance = CashBalance::whereMonth('created_at', $dates[1])->whereYear('created_at', $dates[0])->get();
         $sumTotalPrices = $salesTransaction->sum('transaction_total_price');
         $sumIncomes = $incomes->sum('total');
         $sumExpenses = $expenses->sum('total');
@@ -108,22 +107,16 @@ class ExportController extends Controller
                     'ending_cash' => $initialCash + $change
                 ]);
             }
-
-            if($requestDatePeriod == $cashBalancePeriod)
-            {
-                $updateData = CashBalance::find($cashBalance->id)->update([
-                    'ending_cash' => intval($endingCash),
-                    'change' => intval($change),
-                ]);
-            }else{
-                $initialCash = 0;
-                $insertData = CashBalance::create([
-                    'initial_cash' => $initialCash,
-                    'change' => $change,
-                    'ending_cash' => $initialCash + $change
-                ]);
-            }
+        }else if(!$cashBalance){
+            $initialCash = 0;
+            $insertData = CashBalance::create([
+                'initial_cash' => $initialCash,
+                'change' => $change,
+                'ending_cash' => $initialCash + $change
+            ]);
         }
+
+        $cashBalance = CashBalance::whereMonth('created_at', $dates[1])->whereYear('created_at', $dates[0])->first();
 
         $mpdf = new Mpdf();
         $mpdf->WriteHTML(view('pdf/cashflow', compact('salesTransaction', 'periode', 'sumTotalPrices', 'incomes', 'expenses', 'sumIncomes', 'sumExpenses', 'cashBalance'))->render());
