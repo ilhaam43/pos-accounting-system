@@ -54,7 +54,7 @@
                                                 <th>Total Harga</th>   
                                                 <th>Total Kuantitas</th>
                                                 <th>Pembayaran</th>
-                                                <th>Kembalian</th>
+                                                <th>Kembali</th>
                                                 <th>Tanggal</th>
                                                 <th>Aksi</th>
                                             </tr>

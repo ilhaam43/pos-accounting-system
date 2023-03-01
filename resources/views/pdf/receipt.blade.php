@@ -112,7 +112,7 @@
                         <td>Rp. {{ number_format($salesTransaction->pay, 2, ",", ".") }}</td>
                     </tr>
                     <tr>
-                        <td colspan="4"><b>Kembalian</b></td>
+                        <td colspan="4"><b>Kembali</b></td>
                         <td>Rp. {{ number_format($salesTransaction->change, 2, ",", ".") }}</td>
                     </tr>
                 </tfoot>

@@ -111,7 +111,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
-                                                    <label class="col-sm-4 col-form-label"><h6> Kembalian :</h6></label>
+                                                    <label class="col-sm-4 col-form-label"><h6> Kembali :</h6></label>
                                                     <div class="col-sm-8">
                                                         @foreach($salesTransactionOrder as $orderMenus)
                                                             <input type="hidden" name="menu_name[]" value="{{ $orderMenus->menu->name }}">
