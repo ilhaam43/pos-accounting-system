@@ -44,6 +44,7 @@
             Nav header start
         ***********************************-->
         <div class="nav-header">
+        <center><img src="{{ asset('images/logo warungnya eyang.jpeg') }}" width="80" height="70" alt="Logo"></center>
             <!-- <a href="index.html" class="brand-logo">
                 <img class="logo-abbr" src="./images/logo.png" alt="">
                 <img class="logo-compact" src="./images/logo-text.png" alt="">
@@ -102,6 +103,7 @@
         <div class="quixnav">
             <div class="quixnav-scroll">
                 <ul class="metismenu" id="menu">
+                    <li class="nav-label first">Sistem Informasi Keuangan</li>
                     <li class="nav-label first">Main Menu</li>
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
                                 class="icon icon-single-04"></i><span class="nav-text">Dashboard</span></a>
@@ -110,9 +112,9 @@
                         </ul>
                     </li>
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                        <i class="icon icon-app-store"></i><span class="nav-text">Menu Penjualan</span></a>
+                        <i class="icon icon-app-store"></i><span class="nav-text">Menu Makanan & Minuman</span></a>
                         <ul aria-expanded="false">
-                            <li><a href="{{ route('admin.menus.index') }}">List Menu Penjualan</a></li>
+                            <li><a href="{{ route('admin.menus.index') }}">List Menu Makanan & Minuman</a></li>
                         </ul>
                     </li>
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">

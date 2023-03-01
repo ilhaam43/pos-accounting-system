@@ -21,6 +21,7 @@
                         <div class="row no-gutters">
                             <div class="col-xl-12">
                                 <div class="auth-form">
+                                <center><img src="images/logo warungnya eyang.jpeg" width="100" height="100" alt="Logo"></center>
                                     <h4 class="text-center mb-4">Halaman Login</h4>
                                     <form action="{{ route('login.process') }}" method="POST">
                                     {{ csrf_field() }}
