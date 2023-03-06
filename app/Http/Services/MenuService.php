@@ -24,7 +24,8 @@ class MenuService
         $storeMenu = Menu::create([
             'name' => $request['name'],
             'price' => $request['price'],
-            'image' => $request['image']
+            'image' => $request['image'],
+            'category' => $request['category']
         ]);
 
         return $storeMenu;

@@ -91,5 +91,6 @@ Route::group(['as' => 'ajax.', 'prefix' => 'ajax'], function () {
     Route::get('/incomes', [IncomeController::class, 'getIncomes'])->name('incomes');
     Route::get('/expenses', [ExpenseController::class, 'getExpenses'])->name('expenses');
     Route::get('/cash-balances', [CashBalanceController::class, 'getCashBalance'])->name('cash-balances');
+    Route::get('/menus/{category}', [MenuController::class, 'getMenuByCategory'])->name('menus-category');
 });
 

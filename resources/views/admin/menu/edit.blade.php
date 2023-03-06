@@ -8,13 +8,13 @@
                 <div class="row page-titles mx-0">
                     <div class="col-sm-6 p-md-0">
                         <div class="welcome-text">
-                            <h4>Edit Menu Data</h4>
+                            <h4>Ubah Data Menu Makanan & Minuman</h4>
                             <span class="ml-1"></span>
                         </div>
                     </div>
                     <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="javascript:void(0)">Edit Menu Data</a></li>
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">Ubah Data Menu Makanan & Minuman</a></li>
                         </ol>
                     </div>
                     </div>
@@ -40,7 +40,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">Edit Menu Data</h4>
+                                <h4 class="card-title">Ubah Data Menu Makanan & Minuman</h4>
                             </div>
                             <div class="card-body">
                             <div class="basic-form">
@@ -49,15 +49,22 @@
                                     @method('PUT')
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
-                                                <label>Menu Name</label>
+                                                <label>Nama :</label>
                                                 <input type="text" class="form-control" value="{{$menu->name}}" name="name">
                                             </div>
                                             <div class="form-group col-md-6">
-                                                <label>Menu Price</label>
+                                                <label>Harga :</label>
                                                 <input type="number" class="form-control" value="{{$menu->price}}"name="price">
                                             </div>
-                                            <div class="form-group col-md-12">
-                                                <label>Menu Image</label>
+                                            <div class="form-group col-md-6">
+                                                <label>Kategori :</label>
+                                                    <select type="text" class="form-control" name="category" required>
+                                                        <option value="Makanan">Makanan</option>
+                                                        <option value="Minuman">Minuman</option>
+                                                    </select>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label>Gambar :</label>
                                                 <div class="form-group">
                                                     <div class="custom-file">
                                                         <input type="file" class="custom-file-input" name="menu_image">
@@ -66,8 +73,8 @@
                                                     </div>
                                             </div>
                                         </div>
-                                        <a href="{{route('admin.menus.index')}}" class="btn btn-danger">Batal</a>
-                                        <button type="submit" class="btn btn-primary">Simpan</button>
+                                        <a href="{{route('admin.menus.index')}}" class="btn btn-danger btn-rounded">Batal</a>
+                                        <button type="submit" class="btn btn-primary btn-rounded">Simpan</button>
                                     </form>
                                 </div>
                             </div>

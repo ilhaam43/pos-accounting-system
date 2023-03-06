@@ -22,6 +22,8 @@
                     searchable: false
                 },
 
+                { data: 'category', name:'category'},
+
                 { data: 'name', name: 'name'},
                 { data: 'price', name: 'price'},
 

@@ -80,12 +80,18 @@ class MenuController extends Controller
                 ->addColumn('action', function($row){
                     $routeEdit = route('admin.menus.edit', $row->id) ?? '';
                     $routeDelete = route('admin.menus.destroy', $row->id) ?? '';
-                    $btn = '<a href="'.$routeEdit.'" class="edit btn btn-primary btn-sm">Ubah</a>
-                    <button class="btn btn-danger btn-sm" data-id="'.$row->id.'" data-action="'.$routeDelete.'" onclick="deleteConfirmation('.$row->id.')">Hapus</button>';
+                    $btn = '<a href="'.$routeEdit.'" class="edit btn btn-primary btn-sm btn-rounded">Ubah</a>
+                    <button class="btn btn-danger btn-sm btn-rounded" data-id="'.$row->id.'" data-action="'.$routeDelete.'" onclick="deleteConfirmation('.$row->id.')">Hapus</button>';
                     return $btn;
                 })
                 ->rawColumns(['action', 'image'])
                 ->make(true);
         }
+    }
+
+    public function getMenuByCategory($category)
+    {
+        $menus = Menu::where('category', $category)->get();
+        return response()->json($menus);
     }
 }

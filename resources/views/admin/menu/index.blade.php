@@ -8,13 +8,13 @@
                 <div class="row page-titles mx-0">
                     <div class="col-sm-6 p-md-0">
                         <div class="welcome-text">
-                            <h4>List Menu Penjualan</h4>
+                            <h4>List Menu Makanan & Minuman</h4>
                             <span class="ml-1"></span>
                         </div>
                     </div>
                     <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="javascript:void(0)">List Menu Penjualan</a></li>
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">List Menu Makanan & Minuman</a></li>
                         </ol>
                     </div>
                     </div>
@@ -40,7 +40,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">List Menu Penjualan</h4>
+                                <h4 class="card-title">List Menu Makanan & Minuman</h4>
                                 <!-- Button trigger modal -->
                                 <button type="button" class="btn btn-primary btn-rounded" data-toggle="modal" data-target="#basicModal">Tambah Menu</button>
                                     <!-- Modal -->
@@ -63,6 +63,13 @@
                                                     <div class="form-group">
                                                         <input class="form-control" type="text" name="price" id="price" required>
                                                     </div>
+                                                    <h6> Kategori : </h6>
+                                                    <div class="form-group">
+                                                        <select type="text" class="form-control" name="category" required>
+                                                                <option value="Makanan">Makanan</option>
+                                                                <option value="Minuman">Minuman</option>
+                                                        </select>
+                                                    </div>
                                                     <h6> Gambar : </h6>
                                                     <div class="form-group">
                                                     <div class="custom-file">
@@ -72,8 +79,8 @@
                                                     </div>
                                             </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
-                                                    <button type="submit" class="btn btn-primary">Simpan</button>
+                                                    <button type="button" class="btn btn-danger btn-rounded" data-dismiss="modal">Batal</button>
+                                                    <button type="submit" class="btn btn-primary btn-rounded">Simpan</button>
                                                 </div>
                                                 </form>
                                             </div>
@@ -87,6 +94,7 @@
                                             <tr>
                                                 <th>No</th>
                                                 <th>Gambar</th>
+                                                <th>Kategori</th>
                                                 <th>Nama</th>
                                                 <th>Harga</th>
                                                 <th>Aksi</th>
