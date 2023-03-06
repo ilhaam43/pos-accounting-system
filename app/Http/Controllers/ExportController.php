@@ -106,6 +106,14 @@ class ExportController extends Controller
                     'change' => $change,
                     'ending_cash' => $initialCash + $change
                 ]);
+            }else if($requestDatePeriod == $cashBalancePeriod)
+            {
+                $endingCashSame = $change + ($cashBalance->initial_cash ?? 0);
+
+                $updateCashBalance = CashBalance::find($cashBalance->id)->update([
+                    'ending_cash'  => $endingCashSame,
+                    'change'       => $change
+                ]);
             }
         }else if(!$cashBalance){
             $initialCash = 0;
