@@ -48,6 +48,16 @@
                         </div>
                         <!-- /# card -->
                     </div>
+                    <div class="col-lg-12 col-sm-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-title">Statistik Total Transaksi Penjualan Per Bulan</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <canvas id="lineChart_1"></canvas>
+                                    </div>
+                                </div>
+                            </div>
                     <!-- /# column -->
                 </div>
                 
@@ -59,4 +69,9 @@
         <!--**********************************
             Content body end
         ***********************************-->
+        @push('custom-scripts')
+        <!-- Chart ChartJS plugin files -->
+        <script src="{{asset('vendor/chart.js/Chart.bundle.min.js')}}"></script>
+        @include('admin.js.linechart')
+        @endpush
         @endsection
