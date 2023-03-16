@@ -53,7 +53,7 @@ class TransactionCategoryController extends Controller
                 ->addColumn('action', function($row){
                     $routeEdit = route('owner.transaction-categories.edit', $row->id) ?? '';
                     $routeDelete = route('owner.transaction-categories.destroy', $row->id) ?? '';
-                    $btn = '<button class="btn btn-danger btn-sm" data-id="'.$row->id.'" data-action="'.$routeDelete.'" onclick="deleteConfirmation('.$row->id.')">Hapus</button>';
+                    $btn = '<button class="btn btn-danger btn-sm btn-rounded" data-id="'.$row->id.'" data-action="'.$routeDelete.'" onclick="deleteConfirmation('.$row->id.')">Hapus</button>';
                     return $btn;
                 })
                 ->rawColumns(['action'])
