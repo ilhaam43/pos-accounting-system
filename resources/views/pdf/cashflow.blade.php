@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Laporan Arus Kas</title>
+    <title>Laporan Modal Usaha</title>
     <style>
         /* CSS styles for receipt layout */
         /* You can add your own styles here */
@@ -73,14 +73,14 @@
     <div class="receipt">
         <div class="receipt-header">
             <h1>Warungnya Eyang</h1>
-            <h3>Laporan Arus Kas</h3>
+            <h3>Laporan Modal Usaha</h3>
             <h3>Periode {{ $periode }}</h3>
         </div>
         <div class="receipt-body">
             <table>
                 <tbody>
                         <tr>
-                            <td><b>Arus Kas Masuk</b></td>
+                            <td><b>Pendapatan</b></td>
                             <td></td>
                             <td></td>
                         </tr>
@@ -97,12 +97,12 @@
                         </tr>
                         @endforeach
                         <tr style="background-color:lime;">
-                            <td><b>Total Arus Kas Masuk</b></td>
+                            <td><b>Total Pendapatan</b></td>
                             <td></td>
                             <td><center><b>Rp. {{ number_format($sumIncomes + $sumTotalPrices, 2, ",", ".") }}</center></b></td>
                         </tr>
                         <tr>
-                            <td><b>Arus Kas Keluar</b></td>
+                            <td><b>Pengeluaran</b></td>
                             <td></td>
                             <td></td>
                         </tr>
@@ -116,22 +116,22 @@
                 </tbody>
                 <tfoot>
                     <tr style="background-color:red;">
-                        <td colspan="1"><b>Total Arus Kas Keluar</b></td>
+                        <td colspan="1"><b>Total Pengeluaran</b></td>
                         <td><center><b>Rp. {{ number_format($sumExpenses, 2, ",", ".") }}</b></center></td>
                         <td></td>
                     </tr>
                     <tr>
-                        <td colspan="1"><b>Arus Kas Bersih</b></td>
+                        <td colspan="1"><b>Keuntungan Bersih</b></td>
                         <td></td>
                         <td><center><b>Rp. {{ number_format($sumIncomes + $sumTotalPrices - $sumExpenses, 2, ",", ".") }}</center></b></td>
                     </tr>
                     <tr>
-                        <td colspan="1"><b>Saldo Kas Awal</b></td>
+                        <td colspan="1"><b>Saldo Modal Awal</b></td>
                         <td></td>
                         <td><center><b>Rp. {{ number_format($cashBalance->initial_cash ?? 0, 2, ",", ".") }}</center></b></td>
                     </tr>
                     <tr style="background-color:yellow;">
-                        <td colspan="1"><b>Saldo Kas Akhir</b></td>
+                        <td colspan="1"><b>Saldo Modal Akhir</b></td>
                         <td></td>
                         <td><center><b>Rp. {{ number_format($sumIncomes + $sumTotalPrices - $sumExpenses + ($cashBalance->initial_cash ?? 0), 2, ",", ".") }}</center></b></td>
                     </tr>

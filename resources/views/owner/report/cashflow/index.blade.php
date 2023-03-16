@@ -8,13 +8,13 @@
                 <div class="row page-titles mx-0">
                     <div class="col-sm-6 p-md-0">
                         <div class="welcome-text">
-                            <h4>Laporan Arus Kas</h4>
+                            <h4>Laporan Modal Usaha</h4>
                             <span class="ml-1"></span>
                         </div>
                     </div>
                     <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="javascript:void(0)">Laporan Arus Kas</a></li>
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">Laporan Modal Usaha</a></li>
                         </ol>
                     </div>
                     </div>
@@ -40,7 +40,7 @@
                     <div class="col-6">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">Periode Laporan Arus Kas</h4>
+                                <h4 class="card-title">Periode Laporan Modal Usaha</h4>
                             </div>
                             <div class="card-body">
                             <div class="basic-form">

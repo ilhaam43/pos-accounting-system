@@ -8,13 +8,13 @@
                 <div class="row page-titles mx-0">
                     <div class="col-sm-6 p-md-0">
                         <div class="welcome-text">
-                            <h4>Saldo Kas</h4>
+                            <h4>Saldo Modal Usaha</h4>
                             <span class="ml-1"></span>
                         </div>
                     </div>
                     <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="javascript:void(0)">Saldo Kas</a></li>
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">Saldo Modal Usaha</a></li>
                         </ol>
                     </div>
                     </div>
@@ -40,7 +40,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">Saldo Kas</h4>
+                                <h4 class="card-title">Saldo Modal Usaha</h4>
                                 <!-- Button trigger modal -->
                                 @if($cashBalance == 0)
                                 <button type="button" class="btn btn-primary btn-rounded" data-toggle="modal" data-target="#basicModal">Tambah Saldo Kas</button>
@@ -50,14 +50,14 @@
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title">Tambah Saldo Kas</h5>
+                                                    <h5 class="modal-title">Tambah Saldo Modal Usaha</h5>
                                                     <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
                                                     </button>
                                                 </div>
                                             <div class="modal-body">
                                                 <form method="POST" action="{{ route('owner.cash-balances.store')}}" enctype="multipart/form-data">
                                                 @csrf
-                                                    <h6> Saldo Kas Awal : </h6>
+                                                    <h6> Saldo Modal Awal : </h6>
                                                     <div class="form-group">
                                                         <input class="form-control" type="text" name="initial_cash" required>
                                                     </div>

@@ -135,13 +135,13 @@
                         <ul aria-expanded="false">
                             <li><a href="{{ route('owner.report.sales-transactions.index') }}">Laporan Transaksi Penjualan</a></li>
                             <li><a href="{{ route('owner.report.income-statements.index') }}">Laporan Laba Rugi</a></li>
-                            <li><a href="{{ route('owner.report.cashflows.index') }}">Laporan Arus Kas</a></li>
+                            <li><a href="{{ route('owner.report.cashflows.index') }}">Laporan Modal Usaha</a></li>
                         </ul>
                     </li>
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                        <i class="icon icon-wallet-90"></i><span class="nav-text">Saldo Kas</span></a>
+                        <i class="icon icon-wallet-90"></i><span class="nav-text">Saldo Modal Usaha</span></a>
                         <ul aria-expanded="false">
-                            <li><a href="{{ route('owner.cash-balances.index') }}">Saldo Kas</a></li>
+                            <li><a href="{{ route('owner.cash-balances.index') }}">Saldo Modal Usaha</a></li>
                         </ul>
                     </li>
                 </ul>
