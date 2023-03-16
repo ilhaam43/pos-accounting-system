@@ -4,6 +4,7 @@
     
     let draw = Chart.controllers.line.__super__.draw; //draw shadow
     var countTransactions = {{ $countSalesTransactionByMonth }}
+    var countIncomes = {{ $countIncomeSalesTransactionByMonth }}
 
     //basic line chart
     const lineChart_1 = document.getElementById("lineChart_1").getContext('2d');
@@ -36,8 +37,8 @@
             'September', 'Oktober', 'November', 'Desember',],
             datasets: [
                 {
-                    label: "Transaksi Penjualan",
-                    data: countTransactions,
+                    label: "Transaksi Penjualan Dalam Jutaan Rupiah",
+                    data: countIncomes,
                     borderColor: 'rgba(56, 164, 248, 1)',
                     borderWidth: "2",
                     backgroundColor: 'transparent',  
@@ -51,7 +52,7 @@
                 yAxes: [{
                     ticks: {
                         beginAtZero: true, 
-                        max: 100, 
+                        max: 10, 
                         min: 0, 
                         stepSize: 20, 
                         padding: 10

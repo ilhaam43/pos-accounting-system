@@ -51,7 +51,7 @@
                     <div class="col-lg-12 col-sm-12">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h4 class="card-title">Statistik Total Transaksi Penjualan Per Bulan</h4>
+                                        <h4 class="card-title">Statistik Total Pendapatan Transaksi Penjualan Per Bulan Dalam Jutaan Rupiah</h4>
                                     </div>
                                     <div class="card-body">
                                         <canvas id="lineChart_1"></canvas>

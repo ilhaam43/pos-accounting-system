@@ -67,7 +67,7 @@ class AdminController extends Controller
 
         for ($i = 0; $i < count($countIncomeSalesTransactionByMonth); $i++) {
             if (is_string($countIncomeSalesTransactionByMonth[$i])) {
-                $countIncomeSalesTransactionByMonth[$i] = intval($countIncomeSalesTransactionByMonth[$i]);
+                $countIncomeSalesTransactionByMonth[$i] = intval($countIncomeSalesTransactionByMonth[$i]) / 1000000;
             }
         }
 

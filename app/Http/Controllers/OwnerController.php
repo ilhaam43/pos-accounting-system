@@ -74,9 +74,9 @@ class OwnerController extends Controller
     
             for ($i = 0; $i < count($countIncomeSalesTransactionByMonth); $i++) {
                 if (is_string($countIncomeSalesTransactionByMonth[$i])) {
-                    $countIncomeSalesTransactionByMonth[$i] = intval($countIncomeSalesTransactionByMonth[$i]);
+                    $countIncomeSalesTransactionByMonth[$i] = intval($countIncomeSalesTransactionByMonth[$i]) / 1000000;
                 }
             }
-        return view('owner/index', compact('user', 'income', 'expense', 'cashBalance', 'countSalesTransactionByMonth'));
+        return view('owner/index', compact('user', 'income', 'expense', 'cashBalance', 'countSalesTransactionByMonth', 'countIncomeSalesTransactionByMonth'));
     }
 }
