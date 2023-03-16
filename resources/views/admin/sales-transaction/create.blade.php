@@ -77,8 +77,8 @@
                                                 <th width="5%">No.</th>
                                                 <th scope="col">Gambar Menu</th>
                                                 <th scope="col">Nama Menu</th>
-                                                <th scope="col">Kategori</th>
                                                 <th scope="col">Kuantitas</th>
+                                                <th scope="col">Kategori</th>
                                                 <th scope="col">Harga</th>
                                                 <th scope="col">Jumlah Harga</th>
                                                 <th scope="col">Aksi</th>
@@ -92,7 +92,7 @@
                                                 <td><img src="{{asset($orders->menu->image)}}" width="120" height="120"></td>
                                                 <td><h6>{{ $orders->menu->name }}</h6></td>
                                                 <td><h6>{{ $orders->quantity }}</h6></td>
-                                                <td><h6>{{ $orders->category }}</h6></td>
+                                                <td><h6>{{ $orders->menu->category }}</h6></td>
                                                 <td><h6>Rp. {{ number_format($orders->menu->price, 2, ",", ".") ?? 0 }}</h6></td>
                                                 <td><h6>Rp. {{ number_format($orders->menu->price * $orders->quantity, 2, ",", ".") ?? '' }}</h6></td>
                                                 <td>

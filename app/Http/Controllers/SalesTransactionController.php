@@ -37,6 +37,7 @@ class SalesTransactionController extends Controller
         foreach($salesTransactionOrder as $orders){
             $quantity = $orders->quantity;
             $price = $orders->menu->price;
+            $category = $orders->category;
             $subtotal = $quantity * $price;
             $totalQuantity += $quantity;
             $totalPrice += $subtotal;
