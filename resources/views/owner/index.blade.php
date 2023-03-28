@@ -22,7 +22,7 @@
                             <div class="stat-widget-two card-body">
                                 <div class="stat-content">
                                     <div class="stat-text">Total Saldo Kas Saat Ini</div>
-                                    <div class="stat-digit">Rp. {{ $cashBalance->ending_cash ?? 0 }}</div>
+                                    <div class="stat-digit">Rp. {{ number_format($cashBalance->ending_cash ?? 0, 0, ",", ".") }}</div>
                                 </div>
                             </div>
                         </div>
@@ -32,7 +32,7 @@
                             <div class="stat-widget-two card-body">
                                 <div class="stat-content">
                                     <div class="stat-text">Total Pemasukan Bulan Ini</div>
-                                    <div class="stat-digit">Rp. {{ $income }}</div>
+                                    <div class="stat-digit">Rp. {{ number_format($income ?? 0, 0, ",", ".") }}</div>
                                 </div>
                             </div>
                         </div>
@@ -42,7 +42,7 @@
                             <div class="stat-widget-two card-body">
                                 <div class="stat-content">
                                     <div class="stat-text">Total Pengeluaran Bulan Ini</div>
-                                    <div class="stat-digit">Rp. {{ $expense }}</div>
+                                    <div class="stat-digit">Rp. {{ number_format($expense ?? 0, 0, ",", ".") }}</div>
                                 </div>
                             </div>
                         </div>

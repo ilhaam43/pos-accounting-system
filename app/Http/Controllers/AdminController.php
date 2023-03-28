@@ -24,8 +24,12 @@ class AdminController extends Controller
         $salesTransactionToday = SalesTransaction::where('created_at', '>=', $date)->get();
         $salesTransactionToday = $salesTransactionToday->sum('transaction_total_price');
 
+        $salesTransactionToday = number_format($salesTransactionToday, 0, ",", ".");
+
         $salesTransactionMonth = SalesTransaction::whereMonth('created_at', $periode[1])->whereYear('created_at', $periode[0])->get();
         $salesTransactionMonth = $salesTransactionMonth->sum('transaction_total_price');
+
+        $salesTransactionMonth = number_format($salesTransactionMonth, 0, ",", ".");
 
         //chart count sales transaction by month 
         $countSalesTransactionByMonth = DB::table('sales_transactions')
